@@ -267,12 +267,12 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse(Uint8List image) async {
+  void _getImageResponse(Uint8List bytes, Image image) async {
     // final messages = segmentChat();
 
     final response = await gemini
         .textAndImage(
-          images: [image],
+          images: [bytes],
           text: '''
           Describe the image(s)
           If it contains yam(s), tell the user if the yam is good or bad, if it has any diseases.
@@ -367,7 +367,7 @@ ${messages.map((message) => message).join('\n')}
         final image = await decodeImageFromList(bytes);
 
         final message = types.ImageMessage(
-          author: _user,
+          author: widget.chatRoom.chat.user,
           createdAt: DateTime.now().millisecondsSinceEpoch,
           height: image.height.toDouble(),
           id: const Uuid().v4(),
@@ -377,7 +377,7 @@ ${messages.map((message) => message).join('\n')}
           width: image.width.toDouble(),
         );
 
-        _getImageResponse(bytes);
+        _getImageResponse(bytes, image);
       }
     } catch (e) {
       print('Error picking image: $e');
