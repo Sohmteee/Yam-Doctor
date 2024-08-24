@@ -452,6 +452,8 @@ ${messages.map((message) => message).join('\n')}
           size: bytes.length,
           uri: result.path,
           width: image.width.toDouble(),
+          status: types.Status.delivered,
+          showStatus: true,
         );
 
         _addMessage(message);
