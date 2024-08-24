@@ -118,6 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         SizedBox(height: 20.h),
                                         TextField(
+                                          controller: TextEditingController(
+                                              text: chatRoom.title),
+                                          autofocus: true,
                                           decoration: const InputDecoration(
                                             hintText: 'Enter new chat title',
                                           ),
