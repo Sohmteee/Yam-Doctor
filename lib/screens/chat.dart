@@ -335,7 +335,10 @@ ${messages.map((message) => message).join('\n')}
     final response = await gemini
         .textAndImage(
           images: images,
-          text: '''text''',
+          text: ''' 
+          Describe the image(s) and tell the user if the yam is good or bad.
+          If they aren't pictures of yams, let the user know.
+          '''
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
