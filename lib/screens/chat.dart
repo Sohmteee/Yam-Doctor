@@ -2,6 +2,7 @@ import 'package:app/models/chatroom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -40,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 void _addMessage(types.Message message) {
   setState(() {
-    _messages.insert(0, message);
+    messages.insert(0, message);
   });
 }
 
