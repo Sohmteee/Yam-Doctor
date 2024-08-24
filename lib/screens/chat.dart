@@ -114,13 +114,15 @@ class _ChatScreenState extends State<ChatScreen> {
             debugPrint('Message long pressed: ${message.toJson()['text']}');
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
-          customBottomWidget:  TextField(
+          customBottomWidget: TextField(
             decoration: InputDecoration(
               hintText: 'Type a message',
-              border: InputBorder.none,
+              border: In
+              filled: true,
+              fillColor: Colors.grey[200],
               contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.sp,
-                vertical: 8.sp,
+                horizontal: 16.w,
+                vertical: 8.h,
               ),
             ),
           ),
