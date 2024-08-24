@@ -35,13 +35,11 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(widget.chatRoom.title),
             SizedBox(width: 10.w),
-            Icon(
-              IconlyLight.edit,
-              size: 10.sp,
-            ),
+           
           ],
         ),
       ),
