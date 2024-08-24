@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:app/models/chatroom.dart';
@@ -40,7 +41,6 @@ class _ChatScreenState extends State<ChatScreen> {
           messages: widget.chatRoom.messages,
           onSendPressed: (message) {
             setState(() {
-              // widget.chat.messages.add(message);
             });
           },
           user: widget.chatRoom.chat.user,
@@ -150,8 +150,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
       if (message.uri.startsWith('http')) {
         try {
-          final index =
-              widget.chatRoom.messages.indexWhere((element) => element.id == message.id);
+          final index = widget.chatRoom.messages
+              .indexWhere((element) => element.id == message.id);
           final updatedMessage =
               (widget.chatRoom.messages[index] as types.FileMessage).copyWith(
             isLoading: true,
@@ -172,8 +172,8 @@ class _ChatScreenState extends State<ChatScreen> {
             await file.writeAsBytes(bytes);
           }
         } finally {
-          final index =
-              widget.chatRoom.messages.indexWhere((element) => element.id == message.id);
+          final index = widget.chatRoom.messages
+              .indexWhere((element) => element.id == message.id);
           final updatedMessage =
               (widget.chatRoom.messages[index] as types.FileMessage).copyWith(
             isLoading: null,
@@ -193,8 +193,10 @@ class _ChatScreenState extends State<ChatScreen> {
     types.TextMessage message,
     types.PreviewData previewData,
   ) {
-    final index = widget.chatRoom.messages.indexWhere((element) => element.id == message.id);
-    final updatedMessage = (widget.chatRoom.messages[index] as types.TextMessage).copyWith(
+    final index = widget.chatRoom.messages
+        .indexWhere((element) => element.id == message.id);
+    final updatedMessage =
+        (widget.chatRoom.messages[index] as types.TextMessage).copyWith(
       previewData: previewData,
     );
 
