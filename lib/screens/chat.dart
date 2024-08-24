@@ -294,12 +294,16 @@ class _ChatScreenState extends State<ChatScreen> {
     for (var message in messages) {
       if (message is types.TextMessage) {
         contents.add(
-          Content(parts: [
-            Parts(
-              text: message.toJson()['text'],
-            ),
-            role
-          ]),
+          Content(
+            parts: [
+              Parts(
+                text: message.toJson()['text'],
+              ),
+            ],
+            role: message.author.id == yamDoctor.id
+                ? 'Role.system'
+                : Role.user,
+          ),
         );
       }
 
