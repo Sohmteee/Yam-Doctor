@@ -151,8 +151,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                           ),
                           Positioned(
-                            top: -5.h,
-                            right: -5.w,
+                            top: -10.h,
+                            right: -10.w,
                             child: ZoomTapAnimation(
                               onTap: () {
                                 setState(() {
@@ -160,7 +160,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 });
                               },
                               child: Card(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(0.8),
                                 shape: const CircleBorder(),
                                 child: Icon(
                                   Icons.close,
