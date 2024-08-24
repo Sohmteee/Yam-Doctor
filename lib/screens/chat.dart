@@ -230,7 +230,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                     suffixIcon: Visibility(
-                      visible: _controller.text.isNotEmpty,
+                      visible:
+                          _controller.text.isNotEmpty || _images.isNotEmpty,
                       child: Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: ZoomTapAnimation(
