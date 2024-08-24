@@ -132,11 +132,9 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-         
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-               
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
@@ -185,8 +183,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                     suffixIcon: Visibility(
-                      visible:
-                          _controller.text.isNotEmpty ,
+                      visible: _controller.text.isNotEmpty,
                       child: Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: ZoomTapAnimation(
@@ -196,15 +193,14 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                              _handleSendPressed(
-                                types.PartialText(
-                                  text: _controller.text.trim(),
-                                ),
-                              );
-                              _controller.clear();
+                            _handleSendPressed(
+                              types.PartialText(
+                                text: _controller.text.trim(),
+                              ),
+                            );
+                            _controller.clear();
 
-                              _getResponse();
-                            
+                            _getResponse();
                           },
                         ),
                       ),
@@ -271,18 +267,17 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse(List<Uint8List> images, String text) async {
+  void _getImageResponse(Uint8List image) async {
     // final messages = segmentChat();
 
     final response = await gemini
         .textAndImage(
-          images: images,
+          images: [image],
           text: '''
           Describe the image(s)
           If it contains yam(s), tell the user if the yam is good or bad, if it has any diseases.
           If they aren't pictures of yams, let the user know.
           $preResponse
-          $text
           ''',
           generationConfig: GenerationConfig(
             temperature: temp,
@@ -335,12 +330,6 @@ ${messages.map((message) => message).join('\n')}
     }
   }
 
-  void _showImagePreview(types.ImageMessage message) {
-    setState(() {
-      _images.add(message);
-    });
-  }
-
   void _handleAttachmentPressed() {
     _handleImageSelection();
   }
@@ -387,8 +376,9 @@ ${messages.map((message) => message).join('\n')}
           width: image.width.toDouble(),
         );
 
-        _imagesBytes.add(bytes);
-        _showImagePreview(message);
+        _getImageResponse(
+          images,
+        );
       }
     } catch (e) {
       print('Error picking image: $e');
