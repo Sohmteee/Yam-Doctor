@@ -1,16 +1,15 @@
 import 'package:app/models/chatroom.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
-class ChatsProvider extends ChangeNotifier {
-  List<Chatroom> chats = [];
+class ChatRoomProvider extends ChangeNotifier {
+  List<ChatRoom> chats = [];
 
-  void addChat(Chatroom chat) {
+  void addChat(ChatRoom chat) {
     chats.add(chat);
     notifyListeners();
   }
 
-  void removeChat(Chat chat) {
+  void removeChat(ChatRoom chat) {
     chats.remove(chat);
     notifyListeners();
   }

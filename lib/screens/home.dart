@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final chats = context.watch<ChatsProvider>().chats;
+    final chats = context.watch<ChatRoomProvider>().chats;
 
     return Scaffold(
       appBar: AppBar(
@@ -21,26 +21,28 @@ class _HomeScreenState extends State<HomeScreen> {
           'Recent Chats',
         ),
       ),
-      body: chats.isEmpty ? Center(
-        child: AppBoldText(
-          'No chats yet',
-          color: Colors.grey,
-        ),
-      ) : ListView.builder(
-        itemCount: chats.length,
-        itemBuilder: (context, index) {
-          final chat = chats[index];
+      body: chats.isEmpty
+          ? Center(
+              child: AppBoldText(
+                'No chats yet',
+                color: Colors.grey,
+              ),
+            )
+          : ListView.builder(
+              itemCount: chats.length,
+              itemBuilder: (context, index) {
+                final chat = chats[index];
 
-          return ListTile(
-            title: AppBoldText(
-              chat.title,
+                return ListTile(
+                  title: AppBoldText(
+                    chat.title,
+                  ),
+                  subtitle: Text(
+                    chat.chat.messages.last.,
+                  ),
+                );
+              },
             ),
-            subtitle: Text(
-              chat.message,
-            ),
-          );
-        },
-      ),
     );
   }
 }

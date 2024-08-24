@@ -19,8 +19,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ChatsProvider()),
-       ],
+        ChangeNotifierProvider(create: (_) => ChatRoomProvider()),
+      ],
       child: const MyApp(),
     ),
   );

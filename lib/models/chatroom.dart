@@ -1,15 +1,13 @@
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
-class Chatroom {
+class ChatRoom {
   final String id;
   final String title;
   final Chat chat;
 
-  Chatroom({
+  ChatRoom({
     required this.id,
     required this.title,
     required this.chat,
   });
-
-  
 }
