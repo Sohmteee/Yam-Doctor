@@ -331,11 +331,21 @@ ${messages.map((message) => message).join('\n')}
     final messages = segmentChat();
 
     final response = await gemini
-        .image('''${images.map((image) => image.uri).join('\n')}''')
+        .textAndImage(
+          images: images.map((image) => image.).toList(),
+        )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
-    
+    final message = types.TextMessage(
+      id: const Uuid().v4(),
+      author: yamDoctor,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      text: response!,
+    );
+
+    _addMessage(message);
+  }
 
   Future<void> _nameChat() async {
     final messages = segmentChat(length: 5);
