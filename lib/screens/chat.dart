@@ -21,14 +21,18 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text(widget.chat.title),
       ),
-      body: Chat(
-        messages: widget.chat.messages,
-        onSendPressed: (message) {
-          setState(() {
-            // widget.chat.messages.add(message);
-          });
-        },
-        user: widget.chat.chat.user,
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Chat(
+          
+          messages: widget.chat.messages,
+          onSendPressed: (message) {
+            setState(() {
+              // widget.chat.messages.add(message);
+            });
+          },
+          user: widget.chat.chat.user,
+        ),
       ),
     );
   }
