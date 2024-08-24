@@ -297,6 +297,11 @@ class _ChatScreenState extends State<ChatScreen> {
           /* ${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}:  */
           message.text,
         );
+      } else if (message is types.ImageMessage) {
+        contents.add(
+          /* ${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}:  */
+          '${message.uri}',
+        );
       }
     }
 
