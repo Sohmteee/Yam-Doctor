@@ -282,9 +282,9 @@ class _ChatScreenState extends State<ChatScreen> {
     final data = jsonDecode(response.body);
     debugPrint(data.toString());
 
-    final message = types.TextMessage(
-      author: widget.chatRoom.chat.user,
-    );
+    /* final message = types.TextMessage(
+      author: yamDoctor,
+    ); */
   }
 
   void _addMessage(types.Message message) {

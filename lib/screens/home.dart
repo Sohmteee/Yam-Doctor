@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     user: types.User(
                       id: const Uuid().v4(),
                       firstName: 'You',
-                      imageUrl: 'https://i.pravatar.cc/150?img=1',
+                      // imageUrl: 'https://i.pravatar.cc/150?img=1',
                       role: types.Role.user,
                     ),
                     messages: const [],
