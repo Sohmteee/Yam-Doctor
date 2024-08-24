@@ -255,7 +255,8 @@ class _ChatScreenState extends State<ChatScreen> {
                               for (var image in _images) {
                                 _addMessage(image);
                               }
-                              _getImageResponse(_images);
+                              _getImageResponse(
+                                  _imagesBytes, _controller.text.trim());
                               _images.clear();
                               _imagesBytes.clear();
                             }
@@ -333,13 +334,10 @@ ${messages.map((message) => message).join('\n')}
     // final messages = segmentChat();
 
     final response = await gemini
-        .textAndImage(
-          images: images,
-          text: ''' 
+        .textAndImage(images: images, text: '''
           $preResponse
           $text
-          '''
-        )
+          ''')
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
@@ -431,7 +429,7 @@ ${messages.map((message) => message).join('\n')}
           width: image.width.toDouble(),
         );
 
-      _imagesBytes.add(bytes);
+        _imagesBytes.add(bytes);
         _showImagePreview(message);
       }
     } catch (e) {
