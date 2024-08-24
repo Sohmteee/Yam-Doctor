@@ -144,7 +144,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      message.,
+                      message.name,
                       style: const TextStyle(
                         fontSize: 16,
                       ),
