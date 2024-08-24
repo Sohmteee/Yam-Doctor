@@ -267,7 +267,7 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse(Uint8List bytes, image) async {
+  void _getImageResponse(Uint8List bytes, Image image) async {
     // final messages = segmentChat();
 
     final response = await gemini
@@ -377,7 +377,7 @@ ${messages.map((message) => message).join('\n')}
           width: image.width.toDouble(),
         );
 
-        _getImageResponse(bytes, image);
+        _getImageResponse(bytes,);
       }
     } catch (e) {
       print('Error picking image: $e');
