@@ -131,11 +131,26 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          imageMessageBuilder: Column(
-            children: [
-              
-            ],
-          ),
+          imageMessageBuilder: (message,) {
+            return ImageMessage(
+              message: message,
+              onPreviewDataFetched: (message, previewData) {
+                _handlePreviewDataFetched(message, previewData);
+              },
+              onPreviewDataFetchError: (message, error) {
+                debugPrint('Error fetching preview data: $error');
+              },
+              onPreviewDataFetching: (message) {
+                debugPrint('Fetching preview data...');
+              },
+              onPreviewDataFetched: (message, previewData) {
+                debugPrint('Preview data fetched: $previewData');
+              },
+              onSendPressed: (message) {
+                _handleSendPressed(message);
+              },
+            );
+          },
           customBottomWidget: SizedBox(
             child: Column(
               children: [
