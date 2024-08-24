@@ -181,7 +181,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       },
                     ),
                   ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 4.h),
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
