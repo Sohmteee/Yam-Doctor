@@ -85,8 +85,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: AppBoldText(
                       chat.title,
                     ),
-                    subtitle: Text(
-                      chat.chat.messages.last.metadata?['message'],
+                    subtitle: (chat.chat.messages.isNotEmpty) ? Text(
+                      chat.chat.messages.last.metadata?['message'] ?? '',
                     ),
                   );
                 },
