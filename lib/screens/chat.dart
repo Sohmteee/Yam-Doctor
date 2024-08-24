@@ -280,7 +280,9 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
-    final response = gemini.text('Hello').then((value) => value?.content?.parts?.last.text);
+    final response = gemini.text('Hello').then((value) => value?.content?.parts?.last.text).catchError( (error) =>
+      debugPrint(error.toString());
+    );
     debugPrint(response);
 
     final message = types.TextMessage(
