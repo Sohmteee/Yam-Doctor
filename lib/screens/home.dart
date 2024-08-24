@@ -52,6 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
 
+            debu
+
             Navigator.push(
               context,
               MaterialPageRoute(
