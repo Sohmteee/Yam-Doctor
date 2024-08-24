@@ -134,7 +134,22 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 if (_isTyping)
-                
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 16,
+                        bottom: 8,
+                      ),
+                      child: Text(
+                        'Yam Doctor is typing...',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ),
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
