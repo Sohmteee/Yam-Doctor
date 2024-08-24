@@ -371,7 +371,7 @@ ${messages.map((message) => message).join('\n')}
         .catchError((error) => error.toString());
 
     setState(() {
-      if (widget.chatRoom.title.isEmpty) widget.chatRoom.title = response!;
+      widget.chatRoom.title = response!;
     });
   }
 
@@ -380,7 +380,7 @@ ${messages.map((message) => message).join('\n')}
       widget.chatRoom.messages.insert(0, message);
     });
 
-    if (widget.chatRoom.messages.length > 5) {
+    if (widget.chatRoom.messages.length > 4 && widget.chatRoom.title.isEmpty) {
       _nameChat();
     }
   }
