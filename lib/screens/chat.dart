@@ -139,6 +139,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 Image.file(
                   File(message.uri),
                 ),
+                if (_imageText.isNotEmpty)
+                  Text(
+                    _imageText,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                    ),
+                  ),
               ],
             );
           },
@@ -268,6 +275,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           onTap: () {
                             if (_images.isNotEmpty) {
                               _imageText = _controller.text.trim();
+
                               for (var image in _images) {
                                 _addMessage(image);
                               }
