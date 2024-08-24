@@ -9,12 +9,14 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
+import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -35,10 +37,16 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text(widget.chatRoom.title),
         actions: [
-           Icon(
-            IconlyLight.edit,
-            size: 20.sp,
-          ),
+          ZoomTapAnimation(
+            child: IconButton(
+              splashColor: Colors.transparent,
+              splashRadius: 1,
+              onPressed: () {},
+              icon: const Icon(
+                IconlyLight.edit,
+              ),
+            ),
+          )
         ],
       ),
       body: Padding(
