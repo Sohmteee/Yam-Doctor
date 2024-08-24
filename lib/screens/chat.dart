@@ -52,7 +52,21 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           user: widget.chatRoom.chat.user,
           dateHeaderBuilder: (p0) {
-            
+            return Container(
+              padding: EdgeInsets.only(
+                top: 8.sp,
+                bottom: 8.sp,
+              ),
+              child: Center(
+                child: Text(
+                  p0.dateTime,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12.sp,
+                  ),
+                ),
+              ),
+            );
           },
         ),
       ),
