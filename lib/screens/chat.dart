@@ -143,8 +143,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24.sp),
-                  // borderSide: BorderSide.none,
                 ),
+                fo
                 // filled: true,
                 // fillColor: Colors.grey[300],
                 contentPadding: EdgeInsets.symmetric(
