@@ -381,7 +381,7 @@ ${messages.map((message) => message).join('\n')}
     if (widget.chatRoom.messages.length >= 5 &&
         widget.chatRoom.title ==
             'Chat ${context.read<ChatRoomProvider>().chats.length}') {
-              print('Name chat');
+      print('Name chat..........................................');
       _nameChat();
     }
   }
