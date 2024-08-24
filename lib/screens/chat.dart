@@ -121,7 +121,7 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 50.h,
+                  height: 70.h,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemCount: _images.length,
@@ -175,7 +175,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                   ),
                 ),
-                SizedBox(height: 10.h),
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
