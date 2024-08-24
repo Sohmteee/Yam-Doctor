@@ -148,6 +148,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       style: const TextStyle(
                         fontSize: 16,
                       ),
+                      textAlign: TextAlign.start,
                     ),
                   ),
               ],
