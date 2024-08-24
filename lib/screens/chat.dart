@@ -119,15 +119,22 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: TextField(
             controller: _controller,
             onSubmitted: (value) {
-              _handleSendPressed(types.PartialText);
+              _handleSendPressed(
+                types.PartialText(
+                  text: value.trim(),
+                ),
+              );
               _controller.clear();
             },
+            onChanged: (value) {
+              setState(() {});
+            },
+            
             decoration: InputDecoration(
               hintText: 'Type a message',
               hintStyle: const TextStyle(
                 color: Colors.grey,
               ),
-
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24.sp),
                 borderSide: BorderSide.none,
@@ -138,6 +145,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 horizontal: 16.w,
                 vertical: 8.h,
               ),
+              suffixIcon: V
             ),
           ),
         ),
