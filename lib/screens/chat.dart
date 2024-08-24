@@ -337,9 +337,9 @@ ${messages.map((message) => message).join('\n')}
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
-        setState(() {
-          widget.chatRoom.title = response!;
-        });
+    setState(() {
+      widget.chatRoom.title = response!;
+    });
   }
 
   void _addMessage(types.Message message) {
@@ -347,7 +347,7 @@ ${messages.map((message) => message).join('\n')}
       widget.chatRoom.messages.insert(0, message);
     });
 
-    if (widget.chatRoom.messages.length > 3) {
+    if (widget.chatRoom.messages.length > 5) {
       _nameChat();
     }
   }
