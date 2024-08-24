@@ -29,6 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
+  bool _isImagePreviewVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +200,13 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  void _showImagePreview()
+  void _showImagePreview(types.ImageMessage message) {
+    setState(() {
+      _isImagePreviewVisible = true;
+    });
+
+    
+  }
 
   void _handleAttachmentPressed() {
     _handleImageSelection();
