@@ -100,9 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             chat.chat.messages.last.metadata?['message'],
                           )
                         : null,
-                        trailing: Text(
-                          chat.chat.
-                        ),
+                    trailing: IconButton(
+                      icon: const Icon(
+                        IconlyLight.delete,
+                        color: Colors.red,
+                      ),
+                      onPressed: () {
+                        chatRoomProvider.removeChat(chat);
+                      },
+                    ),
                   );
                 },
               ),
