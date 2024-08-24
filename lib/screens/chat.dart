@@ -51,6 +51,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 .toString());
           },
           user: widget.chatRoom.chat.user,
+          dateHeaderBuilder: (p0) {
+            
+          },
         ),
       ),
     );
