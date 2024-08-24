@@ -311,19 +311,9 @@ class _ChatScreenState extends State<ChatScreen> {
         .text(
           '''
 $preResponse
-${widget.chatRoom.messages.first.toJson()['text']}
+${messages.forEach((message) => message)}
         '''
-          [
-            /* Content(
-              parts: [
-                Parts(
-                  text: preResponse,
-                ),
-              ],
-              role: 'admin',
-            ), */
-            ...messages,
-          ],
+         
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
