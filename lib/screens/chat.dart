@@ -133,7 +133,7 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                if (_images.isNotEmpty)
+            /*     if (_images.isNotEmpty)
                   SizedBox(
                     height: 70.h,
                     child: ListView.separated(
@@ -193,7 +193,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         );
                       },
                     ),
-                  ),
+                  ), */
                 SizedBox(height: 4.h),
                 TextField(
                   controller: _controller,
