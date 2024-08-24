@@ -205,7 +205,30 @@ class _ChatScreenState extends State<ChatScreen> {
       _isImagePreviewVisible = true;
     });
 
-    
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (_, __, ___) {
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _isImagePreviewVisible = false;
+              });
+              Navigator.of(context).pop();
+            },
+            child: Container(
+              color: Colors.black.withOpacity(0.9),
+              child: Center(
+                child: Image.file(
+                  File(message.uri),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 
   void _handleAttachmentPressed() {
@@ -255,7 +278,8 @@ class _ChatScreenState extends State<ChatScreen> {
           width: image.width.toDouble(),
         );
 
-        _addMessage(message);
+        // _addMessage(message);
+        _showImagePreview(message);
       }
     } catch (e) {
       print('Error picking image: $e');
