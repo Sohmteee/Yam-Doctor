@@ -132,16 +132,22 @@ class _ChatScreenState extends State<ChatScreen> {
                         return Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.r),
-                            color: Colors.grey[200],
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 1.sp,
+                            ),
                           ),
-                          child: Image.file(
-                            File(widget.chatRoom.messages
-                                .whereType<types.ImageMessage>()
-                                .first
-                                .uri),
-                            height: 50.h,
-                            width: 50.w,
-                            fit: BoxFit.cover,
+                          child: ClipRRect(
+                            // borderRadius: BorderRadius.circular(12.r),
+                            child: Image.file(
+                              File(widget.chatRoom.messages
+                                  .whereType<types.ImageMessage>()
+                                  .first
+                                  .uri),
+                              height: 50.h,
+                              width: 50.w,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         );
                       },
