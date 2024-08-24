@@ -287,6 +287,9 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
+    final List<String> messages = widget.chatRoom.messages
+        .take(20)
+        .toList();
     final response = await gemini
         .text('''
 $preResponse
