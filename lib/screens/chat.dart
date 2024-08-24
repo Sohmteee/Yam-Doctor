@@ -59,9 +59,8 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Center(
                 child: Text(
-                  switch(p0.dateTime) {
-                     DateTime.now().day =>
-                       'Today',
+                  switch(p0.dateTime.) {
+                     DateTime.now() => 'Today',
                      DateTime.now().subtract(Duration(days=> 1)).day=>
                        'Yesterday',
                     _=>
