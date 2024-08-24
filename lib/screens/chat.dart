@@ -380,7 +380,9 @@ ${messages.map((message) => message).join('\n')}
       widget.chatRoom.messages.insert(0, message);
     });
 
-    if (widget.chatRoom.messages.length > 4 && widget.chatRoom.title.isEmpty) {
+    if (widget.chatRoom.messages.length > 4 &&
+        widget.chatRoom.title ==
+            'Chat ${context.read<ChatRoomProvider>().chats.length + 1}') {
       _nameChat();
     }
   }

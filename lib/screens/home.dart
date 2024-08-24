@@ -36,14 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               String id = const Uuid().v4();
               List<types.Message> messages = [];
-              String title = '';
 
               chatRoomProvider.addChat(
                 ChatRoom(
                   id: id,
-                  title: title.isEmpty
-                      ? 'Chat ${chatRoomProvider.chats.length + 1}'
-                      : title,
+                  title: 'Chat ${chatRoomProvider.chats.length + 1}',
                   messages: messages,
                   chat: Chat(
                     onSendPressed: (message) {},
