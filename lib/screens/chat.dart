@@ -297,8 +297,8 @@ class _ChatScreenState extends State<ChatScreen> {
           Content(parts: [
             Parts(
               text: message.toJson()['text'],
-              
             ),
+            role
           ]),
         );
       }
