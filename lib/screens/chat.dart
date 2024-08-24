@@ -314,22 +314,22 @@ class _ChatScreenState extends State<ChatScreen> {
 
     final response = await gemini
         .chat(
-            /* '''
+          /* '''
 $preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
         ''' */
-        [
-          Content(
-            parts: [
-              Parts(
-                text: preResponse,
-              ),
-            ],
-            role: 'admin',
-          ),
-        ],
-
-            )
+          [
+            Content(
+              parts: [
+                Parts(
+                  text: preResponse,
+                ),
+              ],
+              role: 'admin',
+            ),
+            ...messages,
+          ],
+        )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
