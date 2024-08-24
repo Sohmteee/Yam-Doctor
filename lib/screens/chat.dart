@@ -447,7 +447,7 @@ ${messages.map((message) => message).join('\n')}
           author: widget.chatRoom.chat.user,
           createdAt: DateTime.now().millisecondsSinceEpoch,
           height: image.height.toDouble(),
-          id: const Uuid().v4(),
+          id: 'const Uuid().v4()',
           name: result.name,
           size: bytes.length,
           uri: result.path,
