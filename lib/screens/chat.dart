@@ -134,6 +134,7 @@ class _ChatScreenState extends State<ChatScreen> {
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
           imageMessageBuilder: (types.ImageMessage message,
               {messageWidth = 2}) {
+                int index = widget.chatRoom.messages.whereType((type) => type is types.ImageMessage).toList().indexOf(message);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
