@@ -43,6 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         child: Chat(
           messages: widget.chatRoom.messages,
+          scrollPhysics: const BouncingScrollPhysics(),
           onSendPressed: (message) {
             _handleSendPressed(message);
             debugPrint(widget.chatRoom.messages
@@ -82,6 +83,8 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             );
           },
+       
+       
         ),
       ),
     );
