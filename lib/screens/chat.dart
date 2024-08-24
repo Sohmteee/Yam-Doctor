@@ -186,7 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
       var localPath = message.uri;
       final regExp = RegExp(r'\.(.{2,})$');
 
-      if (regExp.hasMatch(message.uri)) {
+      if (regExp.hasMatch(localPath)) {
         try {
           final index = widget.chatRoom.messages
               .indexWhere((element) => element.id == message.id);
