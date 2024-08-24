@@ -23,10 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text(widget.chat.title),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 8.w,
-          vertical: 2.h,
-        ),
+        padding: EdgeInsets.all(8.sp),
         child: Chat(
           messages: widget.chat.messages,
           onSendPressed: (message) {
