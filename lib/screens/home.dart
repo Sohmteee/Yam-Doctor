@@ -19,77 +19,80 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final chats = context.watch<ChatRoomProvider>().chats;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: AppBoldText(
-          'Recent Chats',
-        ),
-      ),
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(
-          right: 6.w,
-          bottom: 10.h,
-        ),
-        child: FloatingActionButton(
-          onPressed: () {
-            String id = Xid().toString();
-            List<types.Message> messages = [];
-
-            chats.add(
-              ChatRoom(
-                id: id,
-                title: 'New Chat',
-                messages: messages,
-                chat: Chat(
-                  onSendPressed: (message) {},
-                  user: types.User(
-                    id: Xid().toString(),
-                  ),
-                  messages: const [],
-                ),
-              ),
-            );
-
-            debugPrint('Chats: ${chats.map((chat) => chat.title).toList()}');
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatScreen(
-                  chat: chats.singleWhere((chat) => chat.id == id),
-                ),
-              ),
-            );
-          },
-          child: const Icon(
-            Icons.add,
+    return Consumer<ChatRoomProvider>(
+      builder: (context, chats) {
+        return Scaffold(
+          appBar: AppBar(
+            title: AppBoldText(
+              'Recent Chats',
+            ),
           ),
-        ),
-      ),
-      body: chats.isEmpty
-          ? Center(
-              child: AppText(
-                'No chats yet',
-                color: Colors.grey,
-              ),
-            )
-          : ListView.builder(
-              itemCount: chats.length,
-              itemBuilder: (context, index) {
-                final chat = chats[index];
-
-                return ListTile(
-                  title: AppBoldText(
-                    chat.title,
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(
+              right: 6.w,
+              bottom: 10.h,
+            ),
+            child: FloatingActionButton(
+              onPressed: () {
+                String id = Xid().toString();
+                List<types.Message> messages = [];
+        
+                chats.add(
+                  ChatRoom(
+                    id: id,
+                    title: 'New Chat',
+                    messages: messages,
+                    chat: Chat(
+                      onSendPressed: (message) {},
+                      user: types.User(
+                        id: Xid().toString(),
+                      ),
+                      messages: const [],
+                    ),
                   ),
-                  subtitle: Text(
-                    chat.chat.messages.last.metadata?['message'],
+                );
+        
+                debugPrint('Chats: ${chats.map((chat) => chat.title).toList()}');
+        
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChatScreen(
+                      chat: chats.singleWhere((chat) => chat.id == id),
+                    ),
                   ),
                 );
               },
+              child: const Icon(
+                Icons.add,
+              ),
             ),
+          ),
+          body: chats.isEmpty
+              ? Center(
+                  child: AppText(
+                    'No chats yet',
+                    color: Colors.grey,
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: chats.length,
+                  itemBuilder: (context, index) {
+                    final chat = chats[index];
+        
+                    return ListTile(
+                      title: AppBoldText(
+                        chat.title,
+                      ),
+                      subtitle: Text(
+                        chat.chat.messages.last.metadata?['message'],
+                      ),
+                    );
+                  },
+                ),
+        );
+      }
     );
   }
 }
