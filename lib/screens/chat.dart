@@ -130,7 +130,10 @@ class _ChatScreenState extends State<ChatScreen> {
               onChanged: (value) {
                 setState(() {});
               },
-              m
+              minLines: 1,
+              maxLines: 4,
+              keyboardType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
               decoration: InputDecoration(
                 hintText: 'Type a message',
                 hintStyle: const TextStyle(
