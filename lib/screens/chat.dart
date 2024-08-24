@@ -362,23 +362,23 @@ ${messages.map((message) => message).join('\n')}
         source: ImageSource.gallery,
       );
 
-       if (result != null) {
-      final bytes = await result.readAsBytes();
-      final image = await decodeImageFromList(bytes);
+      if (result != null) {
+        final bytes = await result.readAsBytes();
+        final image = await decodeImageFromList(bytes);
 
-      final message = types.ImageMessage(
-          author: widget.chatRoom.chat.user,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        height: image.height.toDouble(),
-        id: const Uuid().v4(),
-        name: result.name,
-        size: bytes.length,
-        uri: result.path,
-        width: image.width.toDouble(),
-      );
+        final message = types.ImageMessage(
+          author: _user,
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          height: image.height.toDouble(),
+          id: const Uuid().v4(),
+          name: result.name,
+          size: bytes.length,
+          uri: result.path,
+          width: image.width.toDouble(),
+        );
 
         _getImageResponse(bytes);
-      
+      }
     } catch (e) {
       print('Error picking image: $e');
     }
