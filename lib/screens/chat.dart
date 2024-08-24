@@ -54,16 +54,18 @@ class _ChatScreenState extends State<ChatScreen> {
           dateHeaderBuilder: (p0) {
             String headerText;
             getDateDifference() {
+              final dayDiff = DateTime.now().difference(p0.dateTime).inDays;
+              if (dayDiff == 0) {
+                return 'Today';
+              } else if (dayDiff == 1) {
+                return 'Yesterday';
+              } else {
+                return p0.dateTime.toString();
+              }
+            }
 
-            }
-            if (p0.dateTime == DateTime.now()) {
-              headerText = 'Today';
-            } else if (p0.dateTime ==
-                DateTime.now().subtract(const Duration(days: 1)).day) {
-              headerText = 'Yesterday';
-            } else {
-              headerText = p0.dateTime.toString();
-            }
+            headerText = getDateDifference();
+
             return Container(
               padding: EdgeInsets.only(
                 top: 8.sp,
