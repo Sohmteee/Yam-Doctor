@@ -1,4 +1,4 @@
-import 'package:app/providers/chats.dart';
+import 'package:app/providers/chatroom.dart';
 import 'package:app/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
