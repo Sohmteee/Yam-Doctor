@@ -212,9 +212,9 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            _handleSendPressed(
-                            _image,
-                            );
+                            if (_image != null) {
+                              _addMessage(_image!);
+                            }
                             _handleSendPressed(
                               types.PartialText(
                                 text: _controller.text.trim(),
