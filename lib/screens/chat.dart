@@ -295,7 +295,6 @@ class _ChatScreenState extends State<ChatScreen> {
       if (message is types.TextMessage) {
         contents.add(
           '${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}: ${message.text}',
-         
         );
       }
     }
@@ -308,13 +307,10 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = segmentChat();
 
     final response = await gemini
-        .text(
-          '''
+        .text('''
 $preResponse
-${messages.forEach((message) => message)}
-        '''
-         
-        )
+${messages.map((message) => message).join('\n')}
+        ''')
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
