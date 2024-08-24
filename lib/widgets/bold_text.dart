@@ -1,25 +1,24 @@
+import 'package:app/main.dart';
 import 'package:flutter/material.dart';
 
 class BoldText extends StatelessWidget {
-  const BoldText( 
+  const BoldText(
     this.text, {
-       this.fontSize,
-        this.fontWeight,
+    this.fontSize,
+    this.fontWeight,
     super.key,
-
   });
 
   final String text;
   final double fontSize;
   final FontWeight fontWeight;
 
-
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return  Text(
       'Yam Doctor',
       style: TextStyle(
-        fontSize: 24,
+        fontSize: fontSize ?? 24.sp,
         fontWeight: FontWeight.bold,
       ),
     );
