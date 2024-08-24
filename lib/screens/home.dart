@@ -1,5 +1,5 @@
 import 'package:app/providers/chats.dart';
-import 'package:app/widgets/bold_text.dart';
+import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: chats.isEmpty
           ? Center(
-              child: AppBoldText(
+              child: AppText(
                 'No chats yet',
                 color: Colors.grey,
               ),
