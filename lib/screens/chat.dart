@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
   final List<Uint8List> _imagesBytes = [];
-  List<String> _imageTexts = [];
+  final List<String> _imageTexts = [];
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -134,7 +134,7 @@ class _ChatScreenState extends State<ChatScreen> {
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
           imageMessageBuilder: (types.ImageMessage message,
               {messageWidth = 2}) {
-                int index = widget.chatRoom.messages
+            int index = widget.chatRoom.messages
                 .whereType<types.ImageMessage>()
                 .toList()
                 .indexOf(message);
@@ -149,8 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      _imageTexts.firstWhere((imageText) =>
-                          imageText.contains(message.uri)),
+                      _imageTexts[index],
                       style: const TextStyle(
                         fontSize: 16,
                       ),
@@ -285,7 +284,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images.isNotEmpty) {
-                              _imageTexts = _controller.text.trim();
+                              _imageTexts.add(_controller.text.trim());
 
                               for (var image in _images) {
                                 _addMessage(image);
