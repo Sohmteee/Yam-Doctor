@@ -9,7 +9,7 @@ import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:iconly/iconly.dart';
-import 'package:images_picker/images_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -29,7 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  final List<types.ImageMessage> _images = [];
+  types.ImageMessage? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -211,8 +211,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            if (_images.isNotEmpty) {
-                              for (var image in _images) {
+                            if (_image.isNotEmpty) {
+                              for (var image in _image) {
                                 _addMessage(image);
                               }
                             }
@@ -245,7 +245,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _showImagePreview(types.ImageMessage message) {
     setState(() {
-      _images.add(message);
+      _image.add(message);
     });
   }
 
