@@ -122,14 +122,21 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 if (_isImagePreviewVisible)
                   SizedBox(
-                    height: 200.h,
+                    height: 50.h,
                     child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: widget.chatRoom.messages
+                          .whereType<types.ImageMessage>()
+                          .length,
                       itemBuilder: (context, index) {
                         return Image.file(
                           File(widget.chatRoom.messages
                               .whereType<types.ImageMessage>()
                               .first
                               .uri),
+                          height: 50.h,
+                          width: 50.w,
+                          fit: BoxFit.cover,
                         );
                       },
                     ),
