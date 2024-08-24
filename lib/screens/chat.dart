@@ -35,9 +35,9 @@ class _ChatScreenState extends State<ChatScreen> {
   double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
-  final List<types.ImageMessage> _images = [];
+  /* final List<types.ImageMessage> _images = [];
   final List<Uint8List> _imagesBytes = [];
-  final List<String> _imageTexts = [];
+  final List<String> _imageTexts = []; */
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -132,98 +132,11 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          imageMessageBuilder: (types.ImageMessage message,
-              {messageWidth = 2}) {
-            int index = widget.chatRoom.messages
-                .whereType<types.ImageMessage>()
-                .toList()
-                .indexOf(message);
-
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Image.file(
-                  File(message.uri),
-                ),
-                if (_imageTexts.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      _imageTexts[index],
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-              ],
-            );
-          },
+         
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                if (_images.isNotEmpty)
-                  SizedBox(
-                    height: 70.h,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _images.length,
-                      separatorBuilder: (context, index) {
-                        return SizedBox(width: 10.w);
-                      },
-                      itemBuilder: (context, index) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                      width: 1.sp,
-                                    ),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(11.r),
-                                    child: Image.file(
-                                      File(_images[index].uri),
-                                      height: 50.h,
-                                      width: 50.w,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: -10.h,
-                                  right: -10.w,
-                                  child: ZoomTapAnimation(
-                                    onTap: () {
-                                      setState(() {
-                                        _images.removeAt(index);
-                                      });
-                                    },
-                                    child: Card(
-                                      color: Colors.white.withOpacity(0.8),
-                                      shape: const CircleBorder(),
-                                      child: Icon(
-                                        Icons.close,
-                                        color: Colors.red,
-                                        size: 20.sp,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                SizedBox(height: 4.h),
+               
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
@@ -273,7 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     suffixIcon: Visibility(
                       visible:
-                          _controller.text.isNotEmpty || _images.isNotEmpty,
+                          _controller.text.isNotEmpty ,
                       child: Padding(
                         padding: EdgeInsets.only(right: 12.w),
                         child: ZoomTapAnimation(
@@ -283,19 +196,6 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            if (_images.isNotEmpty) {
-                              _imageTexts.insert(0, _controller.text.trim());
-
-                              for (var image in _images) {
-                                _addMessage(image);
-                              }
-                              _getImageResponse(
-                                  _imagesBytes, _controller.text.trim());
-
-                              _images.clear();
-                              _imagesBytes.clear();
-                              _controller.clear();
-                            } else {
                               _handleSendPressed(
                                 types.PartialText(
                                   text: _controller.text.trim(),
@@ -304,7 +204,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               _controller.clear();
 
                               _getResponse();
-                            }
+                            
                           },
                         ),
                       ),
