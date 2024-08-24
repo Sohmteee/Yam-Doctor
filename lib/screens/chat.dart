@@ -109,7 +109,9 @@ class _ChatScreenState extends State<ChatScreen> {
             );
           },
           onAttachmentPressed: _handleAttachmentPressed,
-          onMessageTap: (context, ) _handleMessageTap,
+          onMessageTap: (context, message) {
+            _handleMessageTap(context, message);
+          },
           onMessageLongPress: (context, message) {
             debugPrint('Message long pressed: ${message.toJson()['text']}');
           },
