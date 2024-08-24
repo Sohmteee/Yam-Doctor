@@ -267,7 +267,7 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse(Uint8List bytes, Image image) async {
+  void _getImageResponse(Uint8List bytes, image) async {
     // final messages = segmentChat();
 
     final response = await gemini
