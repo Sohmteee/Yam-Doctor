@@ -291,7 +291,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     final List<Content> contents = [];
 
-    for (var message in messages) {
+    for (var message in messages.reversed.toList()) {
       if (message is types.TextMessage) {
         contents.add(
           Content(
