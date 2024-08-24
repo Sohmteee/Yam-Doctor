@@ -199,6 +199,8 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+  void _showImagePreview()
+
   void _handleAttachmentPressed() {
     _handleImageSelection();
   }
