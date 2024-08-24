@@ -24,11 +24,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: chats.isEmpty ? Center(
         child: AppBoldText(
           'No chats yet',
+          color: Colors.grey,
         ),
-      ) : Column(
-        children: [
-          Container(),
-        ],
+      ) : ListView.builder(
+        itemCount: chats.length,
+        itemBuilder: (context, index) {
+          final chat = chats[index];
+
+          return ListTile(
+            title: AppBoldText(
+              chat.title,
+            ),
+            subtitle: Text(
+              chat.message,
+            ),
+          );
+        },
       ),
     );
   }
