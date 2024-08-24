@@ -30,6 +30,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
+  final types.User 
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +256,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             );
                             _controller.clear();
 
-                            _get
+                            _getResponse();
                           },
                         ),
                       ),
@@ -267,6 +268,17 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void _getResponse() async {
+    final response = await http
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
+    final data = jsonDecode(response.body);
+    debugPrint(data.toString());
+
+    final message = types.TextMessage(
+      author: widget.chatRoom.chat.user,
     );
   }
 
