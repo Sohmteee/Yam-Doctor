@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
 
-            debu
+            debugPrint('Chats: ${chats.map((chat) => chat.title).toList()}');
 
             Navigator.push(
               context,
