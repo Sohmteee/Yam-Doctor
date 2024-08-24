@@ -52,6 +52,15 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           user: widget.chatRoom.chat.user,
           dateHeaderBuilder: (p0) {
+            String headerText;
+            if (p0.dateTime == DateTime.now()) {
+              headerText = 'Today';
+            } else if (p0.dateTime ==
+                DateTime.now().subtract(const Duration(days: 1)).day) {
+              headerText = 'Yesterday';
+            } else {
+              headerText = p0.dateTime.toString();
+            }
             return Container(
               padding: EdgeInsets.only(
                 top: 8.sp,
@@ -59,13 +68,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Center(
                 child: Text(
-                  switch(p0.dateTime.) {
-                     DateTime.now() => 'Today',
-                     DateTime.now().subtract(Duration(days=> 1)).day=>
-                       'Yesterday',
-                    _=>
-                       p0.dateTime.toString(),
-                  },
+                  headerText,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 12.sp,
