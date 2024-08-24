@@ -327,6 +327,16 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
+  void _getImageResponse(List<types.ImageMessage> images) async {
+    final messages = segmentChat();
+
+    final response = await gemini
+        .image('''${images.map((image) => image.uri).join('\n')}''')
+        .then((value) => value?.content?.parts?.last.text)
+        .catchError((error) => error.toString());
+    debugPrint(response);
+    
+
   Future<void> _nameChat() async {
     final messages = segmentChat(length: 5);
 
