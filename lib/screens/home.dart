@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:xid/xid.dart';
 
@@ -101,9 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         : null,
                     trailing: IconButton(
-                      icon: const Icon(
-                        IconlyLight.delete,
-                        color: Colors.red,
+                      icon: Icon(
+                        Icons.more,
+                        size: 20.sp,
                       ),
                       onPressed: () {
                         chatRoomProvider.removeChat(chat);
