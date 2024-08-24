@@ -59,7 +59,14 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               child: Center(
                 child: Text(
-                  p0.dateTime,
+                  switch(p0.dateTime) {
+                     DateTime.now().day =>
+                       'Today',
+                     DateTime.now().subtract(Duration(days=> 1)).day=>
+                       'Yesterday',
+                    _=>
+                       p0.dateTime.toString(),
+                  },
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 12.sp,
