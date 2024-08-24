@@ -29,7 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  List<types.ImageMessage>? _images;
+  final List<types.ImageMessage> _images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -120,39 +120,38 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                if (_images != null)
-                  SizedBox(
-                    height: 50.h,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.chatRoom.messages
-                          .whereType<types.ImageMessage>()
-                          .length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.r),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 1.sp,
-                            ),
+                SizedBox(
+                  height: 50.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: widget.chatRoom.messages
+                        .whereType<types.ImageMessage>()
+                        .length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1.sp,
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(11.r),
-                            child: Image.file(
-                              File(widget.chatRoom.messages
-                                  .whereType<types.ImageMessage>()
-                                  .elementAt(index)
-                                  .uri),
-                              height: 50.h,
-                              width: 50.w,
-                              fit: BoxFit.cover,
-                            ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(11.r),
+                          child: Image.file(
+                            File(widget.chatRoom.messages
+                                .whereType<types.ImageMessage>()
+                                .elementAt(index)
+                                .uri),
+                            height: 50.h,
+                            width: 50.w,
+                            fit: BoxFit.cover,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
+                ),
                 SizedBox(height: 10.h),
                 TextField(
                   controller: _controller,
@@ -212,11 +211,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            if (_images != null) {
-                              for (var image in _images!) {
-                                _addMessage(image);
-                              }
+                            if (_images.isNotEmpty) {
+                              _addMessage(_images.removeLast());
                             }
+
                             _handleSendPressed(
                               types.PartialText(
                                 text: _controller.text.trim(),
