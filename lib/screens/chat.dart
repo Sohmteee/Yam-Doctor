@@ -301,18 +301,11 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ],
             role: message.author.id == yamDoctor.id
-                ? 'Role.system'
-                : Role.user,
+                ? 'yam Doctor'
+                : 'user',
           ),
         );
       }
-
-      contents.add(
-        Content(
-          type: ContentType.text,
-          value: message.toJson()['text'],
-        ),
-      );
     }
 
     return contents;
@@ -322,7 +315,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = segmentChat();
 
     final response = await gemini
-        .text('''
+        .chat('''
 $preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
         ''')
