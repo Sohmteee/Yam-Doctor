@@ -131,13 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          imageMessageBuilder: (
-            message,
-          ) {
-            return Column(
-              children: [],
-            );
-          },
+          imageMessageBuilder: (message, )
           customBottomWidget: SizedBox(
             child: Column(
               children: [
