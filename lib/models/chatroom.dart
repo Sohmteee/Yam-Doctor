@@ -4,6 +4,7 @@ class ChatRoom {
   final String id;
   final String title;
   final Chat chat;
+  
 
   ChatRoom({
     required this.id,
