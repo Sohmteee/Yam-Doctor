@@ -131,19 +131,22 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          imageMessageBuilder: (types.ImageMessage message, {messageWidth = 2}) {
+          imageMessageBuilder: (types.ImageMessage message,
+              {messageWidth = 2}) {
             return Column(
               children: [
                 Image.file(
-                  message.uri
-                )
+                  File(message.),
+
+                ),
+
               ],
             );
           },
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                    if (_images.isNotEmpty)
+                if (_images.isNotEmpty)
                   SizedBox(
                     height: 70.h,
                     child: ListView.separated(
