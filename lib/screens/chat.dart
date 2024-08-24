@@ -121,36 +121,25 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 if (_image != null)
-                  SizedBox(
-                    height: 50.h,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.chatRoom.messages
-                          .whereType<types.ImageMessage>()
-                          .length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.r),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 1.sp,
-                            ),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(11.r),
-                            child: Image.file(
-                              File(widget.chatRoom.messages
-                                  .whereType<types.ImageMessage>()
-                                  .first
-                                  .uri),
-                              height: 50.h,
-                              width: 50.w,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1.sp,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(11.r),
+                      child: Image.file(
+                        File(widget.chatRoom.messages
+                            .whereType<types.ImageMessage>()
+                            .first
+                            .uri),
+                        height: 50.h,
+                        width: 50.w,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 SizedBox(height: 10.h),
