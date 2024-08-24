@@ -100,23 +100,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       chat.title,
                     ),
                     trailing: PopupMenuButton<int>(
-                      onSelected: (result) {
+                      onSelected: (int result) {
                         // Handle the selected option here
                         print('Selected: $result');
                       },
                       itemBuilder: (BuildContext context) =>
-                          <PopupMenuEntry<String>>[
-                        const PopupMenuItem<String>(
-                          value: 'Option 1',
-                          child: Text('Option 1'),
+                          <PopupMenuEntry<int>>[
+                        const PopupMenuItem<int>(
+                          value: 1,
+                          child: Text('Edit'),
                         ),
-                        const PopupMenuItem<String>(
-                          value: 'Option 2',
-                          child: Text('Option 2'),
-                        ),
-                        const PopupMenuItem<String>(
-                          value: 'Option 3',
-                          child: Text('Option 3'),
+                        const PopupMenuItem<int>(
+                          value: 2,
+                          child: Text('Delete'),
                         ),
                       ],
                     ),
