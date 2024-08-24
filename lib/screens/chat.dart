@@ -35,9 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
   double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
-  /* final List<types.ImageMessage> _images = [];
-  final List<Uint8List> _imagesBytes = [];
-  final List<String> _imageTexts = []; */
+  bool _isTyping = false;
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -135,6 +133,8 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: SizedBox(
             child: Column(
               children: [
+                if (_isTyping)
+                
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
