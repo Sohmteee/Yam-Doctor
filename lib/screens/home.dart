@@ -3,7 +3,7 @@ import 'package:app/providers/chats.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart' as types;
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:xid/xid.dart';
@@ -33,13 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: FloatingActionButton(
           onPressed: () {
+            String id = Xid().toString();
             chats.add(
               ChatRoom(
-                id: Xid().toString(),
+                id: id,
                 title: 'New Chat',
-                chat: types.Chat(
+                chat: Chat(
                   onSendPressed: (message) {
-                    print(message);
+                    ;
                   },
                   user: User(
                     id: Xid().toString(),
