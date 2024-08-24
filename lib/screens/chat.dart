@@ -28,6 +28,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +119,10 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: TextField(
             decoration: InputDecoration(
               hintText: 'Type a message',
-              border: In
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(24.sp),
+                borderSide: BorderSide.none,
+              ),
               filled: true,
               fillColor: Colors.grey[200],
               contentPadding: EdgeInsets.symmetric(
