@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: chatRoomProvider.chats.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  final chat = chatRoomProvider.chats[index];
+                  final chatRoom = chatRoomProvider.chats[index];
 
                   return ListTile(
                     onTap: () {
@@ -92,20 +92,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ChatScreen(
-                            chatRoom: chat,
+                            chatRoom: chatRoom,
                           ),
                         ),
                       );
                     },
                     title: AppBoldText(
-                      chat.title,
+                      chatRoom.title,
                     ),
                     trailing: PopupMenuButton<int>(
                       onSelected: (int result) {
                         if (result == 1) {
-                          // Rename
+                          showDialog(context: context, builder: builder)
                         } else if (result == 2) {
-                          chatRoomProvider.removeChat(chat.id);
+                          chatRoomProvider.removeChat(chatRoom);
                         }
                       },
                       shape: RoundedRectangleBorder(
