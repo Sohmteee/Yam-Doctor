@@ -319,14 +319,14 @@ $preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
         ''' */
           [
-            Content(
+            /* Content(
               parts: [
                 Parts(
                   text: preResponse,
                 ),
               ],
               role: 'admin',
-            ),
+            ), */
             ...messages,
           ],
         )
