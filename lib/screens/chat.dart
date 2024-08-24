@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:iconly/iconly.dart';
@@ -28,6 +29,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final gemini = Gemini.instance;
+
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
   final types.User yamDoctor = const types.User(
@@ -37,10 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
     role: types.Role.admin,
   );
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
