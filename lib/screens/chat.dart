@@ -51,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 void _addMessage(types.Message message) {
   setState(() {
-    messages.insert(0, message);
+    widget.chat.messages.insert(0, message);
   });
 }
 
@@ -103,9 +103,9 @@ void _handleFileSelection() async {
     type: FileType.any,
   );
 
-  if (result != null && result.files.single.path != null) {file_picker
+  if (result != null && result.files.single.path != null) {
     final message = types.FileMessage(
-      author: _user,
+      author: widget.chat.user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: const Uuid().v4(),
       mimeType: lookupMimeType(result.files.single.path!),
