@@ -47,10 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   messages: messages,
                   chat: Chat(
                     onSendPressed: (message) {},
-                    user: types.User(
-                      id: const Uuid().v4(),
+                    user: const types.User(
+                      id: 'user',
                       firstName: 'You',
-                      // imageUrl: 'https://i.pravatar.cc/150?img=1',
                       role: types.Role.user,
                     ),
                     messages: const [],
