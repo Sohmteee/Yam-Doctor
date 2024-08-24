@@ -151,6 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               // fontSize: 12,
                             ),
                           ),
+                          SizedBox(width: 10.w),
                           SpinKitThreeBounce(
                             color: Colors.deepPurple,
                             size: 20.sp,
