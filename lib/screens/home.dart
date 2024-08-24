@@ -99,13 +99,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: AppBoldText(
                       chat.title,
                     ),
-                    trailing: const PopupMenuButton(
-                      itemBuilder: [
-                        PopupMenuItem(
-                          child: Text('Delete'),
+                    trailing: PopupMenuButton<int>(
+                      onSelected: (result) {
+                        // Handle the selected option here
+                        print('Selected: $result');
+                      },
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'Option 1',
+                          child: Text('Option 1'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'Option 2',
+                          child: Text('Option 2'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'Option 3',
+                          child: Text('Option 3'),
                         ),
                       ],
-                      ),
+                    ),
                   );
                 },
               ),
