@@ -286,7 +286,7 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  List<Content> segmentChat() {
+  List<String> segmentChat() {
     final messages = widget.chatRoom.messages.reversed.take(20).toList();
 
     final List<String> contents = [];
@@ -295,19 +295,12 @@ class _ChatScreenState extends State<ChatScreen> {
       if (message is types.TextMessage) {
         contents.add(
           '${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}: ${message.text}',
-          Content(
-            parts: [
-              Parts(
-                text: message.toJson()['text'],
-              ),
-            ],
-            role: 
-          ),
+         
         );
       }
     }
 
-    debugPrint(contents.map((e) => e.toJson()).toList().toString());
+    debugPrint(contents.toString());
     return contents;
   }
 
@@ -315,11 +308,11 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = segmentChat();
 
     final response = await gemini
-        .chat(
-          /* '''
+        .text(
+          '''
 $preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
-        ''' */
+        '''
           [
             /* Content(
               parts: [
