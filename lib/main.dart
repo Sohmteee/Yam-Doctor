@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           title: 'Yam Doctor',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.blue,
+              seedColor: Colors.deepPurple,
             ),
             useMaterial3: false,
             fontFamily: 'Quicksand',
