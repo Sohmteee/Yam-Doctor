@@ -286,13 +286,33 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  List<Content> segmentChat()
+  List<Content> segmentChat() {
+    final List messages = widget.chatRoom.messages.take(20).toList();
+
+    final List<Content> contents = [];
+
+    for (var message in messages) {
+      if (message is types.ImageMessage) {
+        contents.add(
+          Content(
+            type: ContentType.image,
+            value: message.uri,
+          ),
+        );
+      } else if (message is types.TextMessage)
+      contents.add(
+        Content(
+          type: ContentType.text,
+          value: message.toJson()['text'],
+        ),
+      );
+    }
+
+    return contents;
+  }
 
   void _getResponse() async {
-    final List messages = widget.chatRoom.messages
-        .take(20)
-        .toList();
-
+    final messages = segmentChat();
 
     final response = await gemini
         .text('''
