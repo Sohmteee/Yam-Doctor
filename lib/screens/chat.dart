@@ -286,7 +286,7 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  
+  List<Content> segmentChat()
 
   void _getResponse() async {
     final List messages = widget.chatRoom.messages
