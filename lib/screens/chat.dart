@@ -131,13 +131,19 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          imageMessageBuilder: (message, {messageWidth = 2},) {
-            return Container();
+          imageMessageBuilder: (types.ImageMessage message, {messageWidth = 2}) {
+            return Column(
+              children: [
+                Image.file(
+                  message.uri
+                )
+              ],
+            );
           },
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                /*     if (_images.isNotEmpty)
+                    if (_images.isNotEmpty)
                   SizedBox(
                     height: 70.h,
                     child: ListView.separated(
@@ -197,7 +203,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         );
                       },
                     ),
-                  ), */
+                  ),
                 SizedBox(height: 4.h),
                 TextField(
                   controller: _controller,
