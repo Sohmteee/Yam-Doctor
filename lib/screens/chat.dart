@@ -120,66 +120,68 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                SizedBox(
-                  height: 70.h,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _images.length,
-                    separatorBuilder: (context, index) {
-                      return SizedBox(width: 10.w);
-                    },
-                    itemBuilder: (context, index) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1.sp,
+                if (_images.isNotEmpty)
+                  SizedBox(
+                    height: 70.h,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _images.length,
+                      separatorBuilder: (context, index) {
+                        return SizedBox(width: 10.w);
+                      },
+                      itemBuilder: (context, index) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    border: Border.all(
+                                      color: Colors.grey,
+                                      width: 1.sp,
+                                    ),
                                   ),
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(11.r),
-                                  child: Image.file(
-                                    File(_images[index].uri),
-                                    height: 50.h,
-                                    width: 50.w,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: -10.h,
-                                right: -10.w,
-                                child: ZoomTapAnimation(
-                                  onTap: () {
-                                    setState(() {
-                                      _images.removeAt(index);
-                                    });
-                                  },
-                                  child: Card(
-                                    color: Colors.white.withOpacity(0.8),
-                                    shape: const CircleBorder(),
-                                    child: Icon(
-                                      Icons.close,
-                                      color: Colors.red,
-                                      size: 20.sp,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(11.r),
+                                    child: Image.file(
+                                      File(_images[index].uri),
+                                      height: 50.h,
+                                      width: 50.w,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    },
+                                Positioned(
+                                  top: -10.h,
+                                  right: -10.w,
+                                  child: ZoomTapAnimation(
+                                    onTap: () {
+                                      setState(() {
+                                        _images.removeAt(index);
+                                      });
+                                    },
+                                    child: Card(
+                                      color: Colors.white.withOpacity(0.8),
+                                      shape: const CircleBorder(),
+                                      child: Icon(
+                                        Icons.close,
+                                        color: Colors.red,
+                                        size: 20.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ),
-                ),
+                SizedBox(height: 10.h),
                 TextField(
                   controller: _controller,
                   onSubmitted: (value) {
