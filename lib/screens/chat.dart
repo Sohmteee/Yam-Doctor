@@ -368,9 +368,7 @@ ${messages.map((message) => message).join('\n')}
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
-    setState(() {
-      widget.chatRoom.title = response!;
-    });
+    context.read<ChatRoomProvider>().renameChat(widget., title)
   }
 
   void _addMessage(types.Message message) {
