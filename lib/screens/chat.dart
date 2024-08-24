@@ -281,7 +281,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   String get preResponse {
     return '''
-    Hi there! I'm Yam Doctor, your personal health assistant. I can help you with your health-related questions. How can I help you today?
+    You are a yam doctor, an expert system that tells the user if a yam is good or bad.
+    You tell them what disease(s) the yam might have and how to treat it based on .
 ''';
   }
 
