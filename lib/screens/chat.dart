@@ -1,6 +1,7 @@
 import 'package:app/models/chatroom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -22,9 +23,11 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text(widget.chat.title),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: 8.w,
+          vertical: 2.h,
+        ),
         child: Chat(
-          
           messages: widget.chat.messages,
           onSendPressed: (message) {
             setState(() {
@@ -32,7 +35,6 @@ class _ChatScreenState extends State<ChatScreen> {
             });
           },
           user: widget.chat.chat.user,
-          
         ),
       ),
     );
