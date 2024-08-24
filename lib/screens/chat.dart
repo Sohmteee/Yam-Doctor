@@ -134,6 +134,8 @@ class _ChatScreenState extends State<ChatScreen> {
               maxLines: 4,
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.newline,
+              textCapitalization: TextCapitalization.sentences,
+              
               decoration: InputDecoration(
                 hintText: 'Type a message',
                 hintStyle: const TextStyle(
