@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
               seedColor: Colors.blue,
             ),
             useMaterial3: true,
+            fontFamily: 'Quicksand',
           ),
           home: const HomeScreen(),
           debugShowCheckedModeBanner: false,
