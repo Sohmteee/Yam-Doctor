@@ -531,6 +531,8 @@ ${messages.map((message) => message).join('\n')}
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: const Uuid().v4(),
       text: message.text,
+      status: types.Status.delivered,
+      showStatus: true,
     );
 
     _addMessage(textMessage);
