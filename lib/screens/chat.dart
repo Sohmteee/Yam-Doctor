@@ -281,7 +281,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
       if (results != null) {
         for (var result in results) {
-
           final message = types.ImageMessage(
             author: widget.chatRoom.chat.user,
             createdAt: DateTime.now().millisecondsSinceEpoch,
