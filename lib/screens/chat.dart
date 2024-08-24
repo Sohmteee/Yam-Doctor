@@ -286,7 +286,7 @@ class _ChatScreenState extends State<ChatScreen> {
       id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      type: types.MessageType.text,
+      text: 
     );
   }
 
