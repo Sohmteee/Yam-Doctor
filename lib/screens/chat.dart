@@ -289,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _getResponse() async {
     final response = await gemini
         .text('''
-      $preResponse
+$preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
         ''')
         .then((value) => value?.content?.parts?.last.text)
