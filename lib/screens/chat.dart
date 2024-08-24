@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
               } else if (dayDiff == 1) {
                 return 'Yesterday';
               } else {
-                return p0.dateTime.toString();
+                return p0.dateTime;
               }
             }
 
