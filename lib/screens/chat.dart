@@ -369,7 +369,9 @@ ${messages.map((message) => message).join('\n')}
         .catchError((error) => error.toString());
 
     debugPrint('Chat Name: $response');
-    context.read<ChatRoomProvider>().renameChat(widget.chatRoom, response!);
+    setState(() {
+      context.read<ChatRoomProvider>().renameChat(widget.chatRoom, response!);
+    });
   }
 
   void _addMessage(types.Message message) {
