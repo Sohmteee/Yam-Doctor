@@ -275,12 +275,18 @@ class _ChatScreenState extends State<ChatScreen> {
  */
   void _handleImageSelection() async {
     try {
-      final result = await ImagesPicker.pick(
+      final results = await ImagesPicker.pick(
         pickType: PickType.image,
       );
 
-      if (result != null) {
-        final bytes = await result.readAsBytes();
+      if (results != null) {
+        for (var result in results) {
+          final bytes = await image.readAsBytes();
+          final image = await decodeImageFromList(bytes);
+
+          final message = types.ImageMessage(
+
+        final bytes = await results.readAsBytes();
         final image = await decodeImageFromList(bytes);
 
         final message = types.ImageMessage(
@@ -288,9 +294,9 @@ class _ChatScreenState extends State<ChatScreen> {
           createdAt: DateTime.now().millisecondsSinceEpoch,
           height: image.height.toDouble(),
           id: const Uuid().v4(),
-          name: result.name,
+          name: results.name,
           size: bytes.length,
-          uri: result.path,
+          uri: results.path,
           width: image.width.toDouble(),
         );
 
