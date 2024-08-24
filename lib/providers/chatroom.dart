@@ -13,4 +13,9 @@ class ChatRoomProvider extends ChangeNotifier {
     chats.remove(chat);
     notifyListeners();
   }
+
+  void renameChat(ChatRoom chat, String title) {
+    chat.title = title;
+    notifyListeners();
+  }
 }
