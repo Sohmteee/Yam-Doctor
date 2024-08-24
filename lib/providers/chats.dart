@@ -1,3 +1,4 @@
+import 'package:app/models/chat.dart';
 import 'package:flutter/material.dart';
 
 class ChatsProvider extends ChangeNotifier {
