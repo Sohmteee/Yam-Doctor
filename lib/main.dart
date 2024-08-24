@@ -2,11 +2,12 @@ import 'package:app/providers/chatroom.dart';
 import 'package:app/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -17,6 +18,8 @@ void main() {
     ),
   );
 
+  WidgetsFlutterBinding.ensureInitialized();
+await dotenv.load(fileName: ".env");
  Gemini.init(apiKey: );
 
 
