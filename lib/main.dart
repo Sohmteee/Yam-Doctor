@@ -41,6 +41,15 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
             fontFamily: 'Quicksand',
+            appBarTheme: AppBarTheme(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              titleTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           home: const HomeScreen(),
           debugShowCheckedModeBanner: false,
