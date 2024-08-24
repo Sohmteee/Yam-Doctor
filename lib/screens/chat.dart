@@ -41,8 +41,10 @@ class _ChatScreenState extends State<ChatScreen> {
           messages: widget.chatRoom.messages,
           onSendPressed: (message) {
             _handleSendPressed(message);
-            debugPrint(
-                widget.chatRoom.messages.map((e) => e.).toList().toString());
+            debugPrint(widget.chatRoom.messages
+                .map((e) => e.toJson())
+                .toList()
+                .toString());
           },
           user: widget.chatRoom.chat.user,
         ),
