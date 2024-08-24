@@ -400,8 +400,7 @@ ${messages.map((message) => message).join('\n')}
       widget.chatRoom.messages.insert(0, message);
     });
 
-    if (widget.chatRoom.title ==
-        'Chat ${context.read<ChatRoomProvider>().chats.length}') {
+    if (widget.chatRoom.title == 'New Chat') {
       print('Name chat..........................................');
       _nameChat();
     }

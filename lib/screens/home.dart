@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               chatRoomProvider.addChat(
                 ChatRoom(
                   id: id,
-                  title: 'Chat ${chats.length + 1}',
+                  title: 'New Chat',
                   messages: messages,
                   chat: Chat(
                     onSendPressed: (message) {},
