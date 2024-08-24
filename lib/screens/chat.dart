@@ -349,7 +349,6 @@ ${messages.map((message) => message).join('\n')}
           text: '''
           Describe the image(s) and tell the user if the yam is good or bad.
           If they aren't pictures of yams, let the user know.
-          $preResponse
           $text
           ''',
           generationConfig: GenerationConfig(
