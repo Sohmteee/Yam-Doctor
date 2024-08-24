@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 messages: messages,
                 chat: Chat(
                   onSendPressed: (types.Message message) {
-                    messages.add(
+                    messages.insert(0,
                       message
                     );
                   },
