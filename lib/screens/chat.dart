@@ -145,10 +145,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Row(
                         children: [
                           const Text(
-                            'Yam Doctor is typing...',
+                            'Yam Doctor is typing',
                             style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 12,
+                              // fontSize: 12,
                             ),
                           ),
                           SpinKitThreeBounce(
@@ -305,7 +305,6 @@ ${messages.map((message) => message).join('\n')}
       _isTyping = true;
     });
 
-
     final response = await gemini
         .textAndImage(
           images: [image],
@@ -322,7 +321,9 @@ ${messages.map((message) => message).join('\n')}
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
-        
+    setState(() {
+      _isTyping = false;
+    });
 
     debugPrint(response);
     final message = types.TextMessage(
