@@ -32,7 +32,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final gemini = Gemini.instance;
-  int temp 
+  double temp = .8;
 
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
@@ -373,8 +373,9 @@ ${messages.map((message) => message).join('\n')}
     final messages = segmentChat(length: 5);
 
     final response = await gemini
-        .text('''
-Please name the chat based on the chat so far. You can name it based on the yam disease if any has been diagnosed. The chat so far is as follows:\n
+        .text(
+          '''
+Please name the chat based on the chat so far. You can name it based on the yam disease if any has been diagnosed. Whatever your response is, it should be nothing more than 5 letters. The chat so far is as follows:\n
 ${messages.map((message) => message).join('\n')}
         ''',
           generationConfig: GenerationConfig(
