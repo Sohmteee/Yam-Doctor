@@ -284,7 +284,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images.isNotEmpty) {
-                              _imageTexts.add(_controller.text.trim());
+                              _imageTexts.insert(0, _controller.text.trim());
 
                               for (var image in _images) {
                                 _addMessage(image);
