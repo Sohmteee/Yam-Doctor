@@ -337,6 +337,7 @@ ${messages.map((message) => message).join('\n')}
 
     final response = await gemini
         .textAndImage(images: images, text: '''
+
           $preResponse
           $text
           ''')
