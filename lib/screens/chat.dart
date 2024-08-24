@@ -130,7 +130,7 @@ class _ChatScreenState extends State<ChatScreen> {
             debugPrint('Message long pressed: ${message.toJson()['text']}');
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
-          dateHeaderThreshold: 1,
+          
           customBottomWidget: SizedBox(
             child: Column(
               children: [
