@@ -32,6 +32,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final gemini = Gemini.instance;
+  int temp 
 
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
@@ -321,10 +322,9 @@ class _ChatScreenState extends State<ChatScreen> {
 $preResponse
 ${messages.map((message) => message).join('\n')}
         ''',
-        generationConfig: GenerationConfig(
-          temperature: 0.5,
-          
-        )
+          generationConfig: GenerationConfig(
+            temperature: temp,
+          ),
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
@@ -344,12 +344,18 @@ ${messages.map((message) => message).join('\n')}
     // final messages = segmentChat();
 
     final response = await gemini
-        .textAndImage(images: images, text: '''
+        .textAndImage(
+          images: images,
+          text: '''
           Describe the image(s) and tell the user if the yam is good or bad.
           If they aren't pictures of yams, let the user know.
           $preResponse
           $text
-          ''')
+          ''',
+          generationConfig: GenerationConfig(
+            temperature: temp,
+          ),
+        )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
@@ -370,7 +376,11 @@ ${messages.map((message) => message).join('\n')}
         .text('''
 Please name the chat based on the chat so far. You can name it based on the yam disease if any has been diagnosed. The chat so far is as follows:\n
 ${messages.map((message) => message).join('\n')}
-        ''')
+        ''',
+          generationConfig: GenerationConfig(
+            temperature: temp,
+          ),
+        )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
