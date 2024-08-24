@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: true,
             fontFamily: 'Quicksand',
-            b
+            scaffoldBackgroundColor: Colors.white,
             appBarTheme: AppBarTheme(
               backgroundColor: Colors.white,
               elevation: 0,

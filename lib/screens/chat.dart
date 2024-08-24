@@ -32,6 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
             });
           },
           user: widget.chat.chat.user,
+          
         ),
       ),
     );
