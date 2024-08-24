@@ -1,4 +1,4 @@
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+/* import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 void _addMessage(types.Message message) {
   setState(() {
@@ -174,3 +174,4 @@ void _loadMessages() async {
   });
 }
 
+ */

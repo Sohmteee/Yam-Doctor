@@ -1,5 +1,6 @@
 import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chats.dart';
+import 'package:app/screens/chat.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -42,11 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'New Chat',
                 messages: messages,
                 chat: Chat(
-                  onSendPressed: (types.Message message) {
-                    messages.insert(0,
-                      message
-                    );
-                  },
+                  onSendPressed: (message) {},
                   user: types.User(
                     id: Xid().toString(),
                   ),
@@ -54,6 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             );
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ChatScreen(),
+              ),
+            )
           },
           child: const Icon(
             Icons.add,
