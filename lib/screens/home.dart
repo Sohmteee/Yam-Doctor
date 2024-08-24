@@ -21,6 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
           'Recent Chats',
         ),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+          ),
+        ),
+      ),
       body: chats.isEmpty
           ? Center(
               child: AppText(
