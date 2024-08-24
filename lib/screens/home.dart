@@ -46,6 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onSendPressed: (message) {},
                     user: types.User(
                       id: const Uuid().v4(),
+                      firstName: 'You',
+                      role: types.Role.user,
+                      
                     ),
                     messages: const [],
                   ),
