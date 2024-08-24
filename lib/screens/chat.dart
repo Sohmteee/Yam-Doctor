@@ -29,7 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  types.ImageMessage? _image;
+  final List<types.ImageMessage> _images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -211,8 +211,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            if (_image != null) {
-                              _addMessage(_image!);
+                            if (_images.isNotEmpty) {
+                              for (var image in _images) {
+                                _addMessage(image);
+                              }
                             }
 
                             _handleSendPressed(
@@ -243,7 +245,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _showImagePreview(types.ImageMessage message) {
     setState(() {
-      _image = message;
+      _images.add(message);
     });
   }
 
@@ -273,26 +275,23 @@ class _ChatScreenState extends State<ChatScreen> {
  */
   void _handleImageSelection() async {
     try {
-      final results = await ImagePicker().pickImage( 
+      final results = await ImagePicker().pickMultiImage(
         imageQuality: 70,
         maxWidth: 1440,
-        source: ImageSource.gallery,
       );
 
-      if (results != null) {
-        for (var result in results) {
-          final message = types.ImageMessage(
-            author: widget.chatRoom.chat.user,
-            createdAt: DateTime.now().millisecondsSinceEpoch,
-            name: result.path.split('/').last,
-            id: const Uuid().v4(),
-            size: result.size,
-            uri: result.path,
-          );
+      for (var result in results) {
+        final message = types.ImageMessage(
+          author: widget.chatRoom.chat.user,
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          name: result.path.split('/').last,
+          id: const Uuid().v4(),
+          size: result.size,
+          uri: result.path,
+        );
 
-          // _addMessage(message);
-          _showImagePreview(message);
-        }
+        // _addMessage(message);
+        _showImagePreview(message);
       }
     } catch (e) {
       print('Error picking image: $e');
