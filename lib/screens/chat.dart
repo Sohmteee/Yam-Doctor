@@ -275,10 +275,8 @@ class _ChatScreenState extends State<ChatScreen> {
  */
   void _handleImageSelection() async {
     try {
-      final result = await ImagePicker().pickImage(
-        imageQuality: 70,
-        maxWidth: 1440,
-        source: ImageSource.gallery,
+      final result = await ImagesPicker.pick(
+        pickType: PickType.image,
       );
 
       if (result != null) {
