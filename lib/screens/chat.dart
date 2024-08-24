@@ -281,7 +281,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _getResponse() async {
     final response = await gemini
-        .text()
+        .text(widget.chatRoom.messages.first.toJson()['text'])
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
