@@ -29,7 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  bool _hasImage = false;
+  types.ImageMessage? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
           customBottomWidget: SizedBox(
             child: Column(
               children: [
-                if (_hasImage)
+                if (_image != null)
                   SizedBox(
                     height: 50.h,
                     child: ListView.builder(
@@ -213,9 +213,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             _handleSendPressed(
-                              types.ImageMessage(
-                               
-                              ),
+                            _image,
                             );
                             _handleSendPressed(
                               types.PartialText(
@@ -245,7 +243,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _showImagePreview(types.ImageMessage message) {
     setState(() {
-      _hasImage = true;
+      _image = message;
     });
   }
 
