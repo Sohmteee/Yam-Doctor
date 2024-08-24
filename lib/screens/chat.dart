@@ -159,11 +159,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                   _images.removeAt(index);
                                 });
                               },
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                ),
+                              child: Card(
+                                color: Colors.white,
+                                shape: const CircleBorder(),
                                 child: Icon(
                                   Icons.close,
                                   color: Colors.red,
