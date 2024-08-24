@@ -53,6 +53,9 @@ class _ChatScreenState extends State<ChatScreen> {
           user: widget.chatRoom.chat.user,
           dateHeaderBuilder: (p0) {
             String headerText;
+            getDateDifference() {
+
+            }
             if (p0.dateTime == DateTime.now()) {
               headerText = 'Today';
             } else if (p0.dateTime ==
