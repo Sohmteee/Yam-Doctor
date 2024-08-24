@@ -129,14 +129,20 @@ class _ChatScreenState extends State<ChatScreen> {
                           .whereType<types.ImageMessage>()
                           .length,
                       itemBuilder: (context, index) {
-                        return Image.file(
-                          File(widget.chatRoom.messages
-                              .whereType<types.ImageMessage>()
-                              .first
-                              .uri),
-                          height: 50.h,
-                          width: 50.w,
-                          fit: BoxFit.cover,
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.r),
+                            color: Colors.grey[200],
+                          ),
+                          child: Image.file(
+                            File(widget.chatRoom.messages
+                                .whereType<types.ImageMessage>()
+                                .first
+                                .uri),
+                            height: 50.h,
+                            width: 50.w,
+                            fit: BoxFit.cover,
+                          ),
                         );
                       },
                     ),
