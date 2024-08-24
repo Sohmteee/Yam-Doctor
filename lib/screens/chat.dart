@@ -118,6 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
           onPreviewDataFetched: _handlePreviewDataFetched,
           customBottomWidget: SizedBox(
             child: TextField(
+              al
               controller: _controller,
               onSubmitted: (value) {
                 _handleSendPressed(
