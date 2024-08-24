@@ -136,9 +136,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(11.r),
-                          child: Image.asset(
-                           _images[index].
-                                .uri,
+                          child: Image.file(
+                            File(_images[index].uri),
                             height: 50.h,
                             width: 50.w,
                             fit: BoxFit.cover,
