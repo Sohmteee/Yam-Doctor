@@ -259,16 +259,16 @@ class _ChatScreenState extends State<ChatScreen> {
                                   _imagesBytes, _controller.text.trim());
                               _images.clear();
                               _imagesBytes.clear();
+                            } else {
+                              _handleSendPressed(
+                                types.PartialText(
+                                  text: _controller.text.trim(),
+                                ),
+                              );
+                              _controller.clear();
+
+                              _getResponse();
                             }
-
-                            _handleSendPressed(
-                              types.PartialText(
-                                text: _controller.text.trim(),
-                              ),
-                            );
-                            _controller.clear();
-
-                            _getResponse();
                           },
                         ),
                       ),
