@@ -370,6 +370,8 @@ ${messages.map((message) => message).join('\n')}
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
+    debugPrint('Chat name: $response');
+
     setState(() {
       widget.chatRoom.title = response!;
     });
