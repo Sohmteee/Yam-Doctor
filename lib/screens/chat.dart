@@ -424,8 +424,8 @@ ${messages.map((message) => message).join('\n')}
           uri: result.path,
           width: image.width.toDouble(),
         );
-
-        // _addMessage(message);
+        
+      _imagesBytes.add(message.bytes);
         _showImagePreview(message);
       }
     } catch (e) {
