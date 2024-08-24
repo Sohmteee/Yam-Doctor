@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final chats = context
     return Scaffold(
       appBar: AppBar(
         title: AppBoldText(
