@@ -5,12 +5,14 @@ class AppText extends StatelessWidget {
     this.text, {
     this.fontSize,
     this.fontWeight,
+    this.color,
     super.key,
   });
 
   final String text;
   double? fontSize;
   FontWeight? fontWeight;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
