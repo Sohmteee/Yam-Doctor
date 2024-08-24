@@ -292,14 +292,17 @@ class _ChatScreenState extends State<ChatScreen> {
     final List<Content> contents = [];
 
     for (var message in messages) {
-      if (message is types.ImageMessage) {
+      if (message is types.TextMessage) {
         contents.add(
-          Content(
-            type: ContentType.image,
-            value: message.uri,
-          ),
+          Content(parts: [
+            Part(
+              type: PartType.text,
+              value: message.toJson()['text'],
+            ),
+          ]),
         );
-      } else if (message is types.TextMessage)
+      }
+
       contents.add(
         Content(
           type: ContentType.text,
