@@ -300,9 +300,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 text: message.toJson()['text'],
               ),
             ],
-            role: message.author.id == yamDoctor.id
-                ? 'yam Doctor'
-                : 'user',
+            role: message.author.id == yamDoctor.id ? 'yam Doctor' : 'user',
           ),
         );
       }
@@ -315,10 +313,23 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = segmentChat();
 
     final response = await gemini
-        .chat('''
+        .chat(
+            /* '''
 $preResponse
 ${widget.chatRoom.messages.first.toJson()['text']}
-        ''')
+        ''' */
+        [
+          Content(
+            parts: [
+              Parts(
+                text: preResponse,
+              ),
+            ],
+            role: 'admin',
+          ),
+        ],
+
+            )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
