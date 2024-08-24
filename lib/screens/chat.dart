@@ -138,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                           ),
                           child: ClipRRect(
-                            // borderRadius: BorderRadius.circular(12.r),
+                            borderRadius: BorderRadius.circular(11.r),
                             child: Image.file(
                               File(widget.chatRoom.messages
                                   .whereType<types.ImageMessage>()
