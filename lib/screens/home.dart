@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     chat.title,
                   ),
                   subtitle: Text(
-                    chat.chat.messages.last.,
+                    chat.chat.messages.last.metadata?['message'],
                   ),
                 );
               },
