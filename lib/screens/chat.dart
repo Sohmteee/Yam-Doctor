@@ -326,8 +326,18 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _nameChat() {
+  Future<void> _nameChat() async {
     final messages = segmentChat(length: 5);
+
+    final response = await gemini
+        .text('''
+$'Please name the chat based on the chat so far. The chat so far is as follows:\n'
+${messages.map((message) => message).join('\n')}
+        ''')
+        .then((value) => value?.content?.parts?.last.text)
+        .catchError((error) => error.toString());
+
+        setState
   }
 
   void _addMessage(types.Message message) {
