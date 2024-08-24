@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ChatScreen(
-                    chat: chatRoomProvider.chats
+                    chatRoom: chatRoomProvider.chats
                         .singleWhere((chat) => chat.id == id),
                   ),
                 ),
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ChatScreen(
-                            chat: chat,
+                            chatRoom: chat,
                           ),
                         ),
                       );
