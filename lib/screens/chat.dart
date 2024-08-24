@@ -282,8 +282,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
-    final response = await http
-        .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
+    final response = gemini.text(text);
     final data = jsonDecode(response.body);
     debugPrint(data.toString());
 
@@ -291,7 +290,7 @@ class _ChatScreenState extends State<ChatScreen> {
       id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      text: data['title'],
+      text: response,
     );
 
     _addMessage(message);
