@@ -1,6 +1,7 @@
 import 'package:app/providers/chats.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,8 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.only(
+          right: 6.w,
+          bottom: 10.h,
+        ),
         child: FloatingActionButton(
+          
           onPressed: () {},
           child: const Icon(
             Icons.add,
