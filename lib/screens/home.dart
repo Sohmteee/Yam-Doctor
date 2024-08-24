@@ -103,7 +103,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     trailing: PopupMenuButton<int>(
                       onSelected: (int result) {
                         if (result == 1) {
-                          showDialog(context: context, builder: builder)
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(20.w),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        AppBoldText(
+                                          'Rename Chat',
+                                          fontSize: 20.sp,
+                                        ),
+                                        SizedBox(height: 20.h),
+                                        TextField(
+                                          decoration: const InputDecoration(
+                                            hintText: 'Enter new name',
+                                          ),
+                                          onSubmitted: (value) {
+                                            chatRoomProvider.renameChat(
+                                              chatRoom,
+                                              value,
+                                            );
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
                         } else if (result == 2) {
                           chatRoomProvider.removeChat(chatRoom);
                         }
