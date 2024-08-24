@@ -279,6 +279,12 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  String get preResponse {
+    return '''
+    Hi there! I'm Yam Doctor, your personal health assistant. I can help you with your health-related questions. How can I help you today?
+''';
+  }
+
   void _getResponse() async {
     final response = await gemini
         .text(widget.chatRoom.messages.first.toJson()['text'])
