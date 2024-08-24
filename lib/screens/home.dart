@@ -100,6 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             chat.chat.messages.last.metadata?['message'],
                           )
                         : null,
+                        trailing: Text(
+                          chat.chat.
+                        ),
                   );
                 },
               ),
