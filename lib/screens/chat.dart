@@ -330,14 +330,14 @@ ${messages.map((message) => message).join('\n')}
   }
 
   void _getImageResponse(List<Uint8List> images, String text) async {
-    final messages = segmentChat();
+    // final messages = segmentChat();
 
     final response = await gemini
         .textAndImage(
           images: images,
           text: ''' 
-          Describe the image(s) and tell the user if the yam is good or bad.
-          If they aren't pictures of yams, let the user know.
+          $preResponse
+          $text
           '''
         )
         .then((value) => value?.content?.parts?.last.text)
