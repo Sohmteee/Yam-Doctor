@@ -212,7 +212,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images.isNotEmpty) {
-                              _addMessage(_images.removeLast());
+                              for (var image in _images) {
+                                _addMessage(image);
+                              }
                             }
 
                             _handleSendPressed(
