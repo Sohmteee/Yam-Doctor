@@ -30,7 +30,12 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
-  final types.User 
+  final types.User yamDoctor = const types.User(
+    id: 'yamDoctor',
+    firstName: 'Yam Doctor',
+    // imageUrl: 'https://i.pravatar.cc/150?img=1',
+    role: types.Role.admin,
+  );
 
   @override
   Widget build(BuildContext context) {
