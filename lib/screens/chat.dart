@@ -135,7 +135,6 @@ class _ChatScreenState extends State<ChatScreen> {
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.newline,
               textCapitalization: TextCapitalization.sentences,
-              
               decoration: InputDecoration(
                 hintText: 'Type a message',
                 hintStyle: const TextStyle(
@@ -144,7 +143,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24.sp),
                 ),
-                fo
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24.sp),
+                  borderSide: BorderSide(
+                    color: Colors.deepPurple,
+                    width: 2.sp,
+                  ),
+                ),
                 // filled: true,
                 // fillColor: Colors.grey[300],
                 contentPadding: EdgeInsets.symmetric(
