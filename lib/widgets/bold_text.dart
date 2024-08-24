@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoldText extends StatelessWidget {
-  const BoldText(
+  BoldText(
     this.text, {
     this.fontSize,
     this.fontWeight,
@@ -10,15 +10,15 @@ class BoldText extends StatelessWidget {
   });
 
   final String text;
-  final double? fontSize;
-  final FontWeight? fontWeight;
+  double? fontSize;
+  FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: fontSize ?? 24.sp,
+        fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.bold,
       ),
     );
