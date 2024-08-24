@@ -20,7 +20,7 @@ dependencies:
   iconly: ^1.0.1
   provider: ^6.1.2
   url_launcher: ^6.3.0
-  xid: ^1.2.1
+  uuid: ^4.4.2
   zoom_tap_animation: ^1.1.0
 
 dev_dependencies:

@@ -7,6 +7,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 import 'package:xid/xid.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: FloatingActionButton(
             onPressed: () {
-              String id = Xid().toString();
+              String id = Uuid().v4();
               List<types.Message> messages = [];
 
               chatRoomProvider.addChat(
