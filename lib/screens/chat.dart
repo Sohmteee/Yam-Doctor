@@ -9,6 +9,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
+import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
@@ -33,7 +34,16 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.chatRoom.title),
+        title: Row(
+          children: [
+            Text(widget.chatRoom.title),
+            SizedBox(width: 10.w),
+            Icon(
+              IconlyLight.edit,
+              size: 10.sp,
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.only(
