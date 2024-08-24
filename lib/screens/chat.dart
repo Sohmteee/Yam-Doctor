@@ -124,9 +124,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   height: 50.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: widget.chatRoom.messages
-                        .whereType<types.ImageMessage>()
-                        .length,
+                    itemCount: _images.length,
                     itemBuilder: (context, index) {
                       return Container(
                         decoration: BoxDecoration(
@@ -138,11 +136,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(11.r),
-                          child: Image.file(
-                            File(widget.chatRoom.messages
-                                .whereType<types.ImageMessage>()
-                                .elementAt(index)
-                                .uri),
+                          child: Image.asset(
+                           _images[index].
+                                .uri,
                             height: 50.h,
                             width: 50.w,
                             fit: BoxFit.cover,
