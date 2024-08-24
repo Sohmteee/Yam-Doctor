@@ -21,6 +21,7 @@ class AppBoldText extends StatelessWidget {
       style: TextStyle(
         fontWeight: fontWeight ?? FontWeight.bold,
         fontFamily: 'Quicksand',
+        fontSize: fontSize,
       ),
     );
   }
@@ -47,6 +48,7 @@ class AppText extends StatelessWidget {
       style: TextStyle(
         fontWeight: fontWeight ?? FontWeight.normal,
         fontFamily: 'Quicksand',
+        fontSize: fontSize,
       ),
     );
   }

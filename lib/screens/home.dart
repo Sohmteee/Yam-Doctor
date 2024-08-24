@@ -119,8 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         SizedBox(height: 20.h),
                                         TextField(
                                           decoration: const InputDecoration(
-                                            hintText: 'Enter new name',
+                                            hintText: 'Enter new chat title',
                                           ),
+
                                           onSubmitted: (value) {
                                             chatRoomProvider.renameChat(
                                               chatRoom,
