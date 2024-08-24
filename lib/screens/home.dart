@@ -48,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       id: const Uuid().v4(),
                       firstName: 'You',
                       role: types.Role.user,
-                      
                     ),
                     messages: const [],
                   ),
