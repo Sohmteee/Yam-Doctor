@@ -286,7 +286,7 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  List<String> segmentChat(int length = 20) {
+  List<String> segmentChat({int length = 20}) {
     final messages = widget.chatRoom.messages.reversed.take(20).toList();
 
     final List<String> contents = [];
@@ -324,6 +324,10 @@ ${messages.map((message) => message).join('\n')}
     );
 
     _addMessage(message);
+  }
+
+  void _nameChat() {
+    final messages = segmentChat(length: 5);
   }
 
   void _addMessage(types.Message message) {
