@@ -281,27 +281,23 @@ class _ChatScreenState extends State<ChatScreen> {
 
       if (results != null) {
         for (var result in results) {
-          final bytes = await image.readAsBytes();
+          final bytes = await result.readAsBytes();
           final image = await decodeImageFromList(bytes);
 
           final message = types.ImageMessage(
+            author: widget.chatRoom.chat.user,
+            createdAt: DateTime.now().millisecondsSinceEpoch,
+            height: image.height.toDouble(),
+            id: const Uuid().v4(),
+            name: results.name,
+            size: bytes.length,
+            uri: results.path,
+            width: image.width.toDouble(),
+          );
 
-        final bytes = await results.readAsBytes();
-        final image = await decodeImageFromList(bytes);
-
-        final message = types.ImageMessage(
-          author: widget.chatRoom.chat.user,
-          createdAt: DateTime.now().millisecondsSinceEpoch,
-          height: image.height.toDouble(),
-          id: const Uuid().v4(),
-          name: results.name,
-          size: bytes.length,
-          uri: results.path,
-          width: image.width.toDouble(),
-        );
-
-        // _addMessage(message);
-        _showImagePreview(message);
+          // _addMessage(message);
+          _showImagePreview(message);
+        }
       }
     } catch (e) {
       print('Error picking image: $e');
