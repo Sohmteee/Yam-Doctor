@@ -118,7 +118,6 @@ class _ChatScreenState extends State<ChatScreen> {
           onPreviewDataFetched: _handlePreviewDataFetched,
           customBottomWidget: SizedBox(
             child: TextField(
-              al
               controller: _controller,
               onSubmitted: (value) {
                 _handleSendPressed(
@@ -142,10 +141,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(24.sp),
-                  borderSide: BorderSide.none,
+                  // borderSide: BorderSide.none,
                 ),
-                filled: true,
-                fillColor: Colors.grey[300],
+                // filled: true,
+                // fillColor: Colors.grey[300],
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 16.w,
                   vertical: 12.h,
