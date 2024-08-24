@@ -118,75 +118,83 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           customBottomWidget: SizedBox(
-            child: TextField(
-              controller: _controller,
-              onSubmitted: (value) {
-                _handleSendPressed(
-                  types.PartialText(
-                    text: value.trim(),
+            child: Column(
+              children: [
+                if (_isImagePreviewVisible)
+                  
                   ),
-                );
-                _controller.clear();
-              },
-              onChanged: (value) {
-                setState(() {});
-              },
-              minLines: 1,
-              maxLines: 4,
-              keyboardType: TextInputType.multiline,
-              textInputAction: TextInputAction.newline,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                hintText: 'Type a message',
-                hintStyle: const TextStyle(
-                  color: Colors.grey,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24.sp),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24.sp),
-                  borderSide: BorderSide(
-                    color: Colors.deepPurple,
-                    width: 2.sp,
-                  ),
-                ),
-                // filled: true,
-                // fillColor: Colors.grey[300],
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 16.w,
-                  vertical: 12.h,
-                ),
-                prefixIcon: ZoomTapAnimation(
-                  onTap: _handleImageSelection,
-                  child: Icon(
-                    IconlyLight.image,
-                    color: Colors.black,
-                    size: 25.sp,
-                  ),
-                ),
-                suffixIcon: Visibility(
-                  visible: _controller.text.isNotEmpty,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 12.w),
-                    child: ZoomTapAnimation(
-                      child: Icon(
-                        IconlyLight.send,
+                SizedBox(height: 10.h),
+                TextField(
+                  controller: _controller,
+                  onSubmitted: (value) {
+                    _handleSendPressed(
+                      types.PartialText(
+                        text: value.trim(),
+                      ),
+                    );
+                    _controller.clear();
+                  },
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                  minLines: 1,
+                  maxLines: 4,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                  textCapitalization: TextCapitalization.sentences,
+                  decoration: InputDecoration(
+                    hintText: 'Type a message',
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(24.sp),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(24.sp),
+                      borderSide: BorderSide(
                         color: Colors.deepPurple,
+                        width: 2.sp,
+                      ),
+                    ),
+                    // filled: true,
+                    // fillColor: Colors.grey[300],
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 16.w,
+                      vertical: 12.h,
+                    ),
+                    prefixIcon: ZoomTapAnimation(
+                      onTap: _handleImageSelection,
+                      child: Icon(
+                        IconlyLight.image,
+                        color: Colors.black,
                         size: 25.sp,
                       ),
-                      onTap: () {
-                        _handleSendPressed(
-                          types.PartialText(
-                            text: _controller.text.trim(),
+                    ),
+                    suffixIcon: Visibility(
+                      visible: _controller.text.isNotEmpty,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 12.w),
+                        child: ZoomTapAnimation(
+                          child: Icon(
+                            IconlyLight.send,
+                            color: Colors.deepPurple,
+                            size: 25.sp,
                           ),
-                        );
-                        _controller.clear();
-                      },
+                          onTap: () {
+                            _handleSendPressed(
+                              types.PartialText(
+                                text: _controller.text.trim(),
+                              ),
+                            );
+                            _controller.clear();
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
@@ -204,31 +212,6 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() {
       _isImagePreviewVisible = true;
     });
-
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        opaque: false,
-        pageBuilder: (_, __, ___) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                _isImagePreviewVisible = false;
-              });
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              color: Colors.black.withOpacity(0.9),
-              child: Center(
-                child: Image.file(
-                  File(message.uri),
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
   }
 
   void _handleAttachmentPressed() {
