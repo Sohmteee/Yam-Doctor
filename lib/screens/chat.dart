@@ -211,10 +211,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             size: 25.sp,
                           ),
                           onTap: () {
-                            if (_image.isNotEmpty) {
-                              for (var image in _image) {
-                                _addMessage(image);
-                              }
+                            if (_image != null) {
+                              _addMessage(_image!);
                             }
 
                             _handleSendPressed(
@@ -245,7 +243,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _showImagePreview(types.ImageMessage message) {
     setState(() {
-      _image.add(message);
+      _image = message;
     });
   }
 
@@ -275,8 +273,10 @@ class _ChatScreenState extends State<ChatScreen> {
  */
   void _handleImageSelection() async {
     try {
-      final results = await ImagesPicker.pick(
-        pickType: PickType.image,
+      final results = await ImagePicker().pickImage( 
+        imageQuality: 70,
+        maxWidth: 1440,
+        source: ImageSource.,
       );
 
       if (results != null) {
