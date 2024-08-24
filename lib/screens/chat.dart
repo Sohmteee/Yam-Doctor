@@ -118,11 +118,16 @@ class _ChatScreenState extends State<ChatScreen> {
           onPreviewDataFetched: _handlePreviewDataFetched,
           customBottomWidget: TextField(
             controller: _controller,
+            onSubmitted: (value) {
+              _handleSendPressed(types.PartialText);
+              _controller.clear();
+            },
             decoration: InputDecoration(
               hintText: 'Type a message',
               hintStyle: const TextStyle(
                 color: Colors.grey,
               ),
+
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24.sp),
                 borderSide: BorderSide.none,
