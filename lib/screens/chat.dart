@@ -17,7 +17,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -39,7 +38,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   bool _isTyping = false;
   final types.User yamDoctor = const types.User(
-    id: 'yamDoctor',
+    id: 'yam doctor',
     firstName: 'Yam Doctor',
     role: types.Role.admin,
   );
