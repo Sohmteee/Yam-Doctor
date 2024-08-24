@@ -102,8 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     trailing: PopupMenuButton<int>(
                       onSelected: (int result) {
-                        // Handle the selected option here
-                        print('Selected: $result');
+                        if (result == 1) {
+                          // Rename
+                        } else if (result == 2) {
+                          chatRoomProvider.removeChat(chat.id);
+                        }
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r),
