@@ -36,15 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
             String id = Xid().toString();
             List<Message> messages = [];
 
-
             chats.add(
               ChatRoom(
                 id: id,
                 title: 'New Chat',
-                messages: [],
+                messages: messages,
                 chat: Chat(
                   onSendPressed: (message) {
-                    ;
+                    messages.add(
+                      Message(
+                        message: ,
+                      ),
+                    );
                   },
                   user: types.User(
                     id: Xid().toString(),
