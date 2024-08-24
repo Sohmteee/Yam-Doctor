@@ -319,7 +319,8 @@ ${messages.map((message) => message).join('\n')}
           ),
         )
         .then((value) => value?.content?.parts?.last.text)
-        .catchError((error) => error.toString());
+        .catchError((error) =>
+            'It looks like an error occurred. Check your internet connection and try again.');
 
     setState(() {
       _isTyping = false;
