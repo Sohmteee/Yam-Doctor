@@ -1,3 +1,4 @@
+import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chats.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,23 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: 10.h,
         ),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            chats.add(
+              ChatRoom(
+                id: Xid(),
+                title: 'New Chat',
+                chat: Chat(
+                  messages: [
+                    Message(
+                      metadata: {
+                        'message': 'Hello there!',
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
           child: const Icon(
             Icons.add,
           ),
