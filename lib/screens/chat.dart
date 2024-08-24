@@ -287,11 +287,11 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   List<Content> segmentChat() {
-    final List messages = widget.chatRoom.messages.take(20).toList();
+    final messages = widget.chatRoom.messages.reversed.take(20).toList();
 
     final List<Content> contents = [];
 
-    for (var message in messages.reversed.toList()) {
+    for (var message in messages) {
       if (message is types.TextMessage) {
         contents.add(
           Content(
