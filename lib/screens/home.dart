@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(
         appBar: AppBar(
           title: AppBoldText(
-            'Recent Chats',
+            'Chats',
           ),
         ),
         floatingActionButton: Padding(
