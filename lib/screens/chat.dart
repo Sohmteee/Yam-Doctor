@@ -135,15 +135,19 @@ class _ChatScreenState extends State<ChatScreen> {
           imageMessageBuilder: (types.ImageMessage message,
               {messageWidth = 2}) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Image.file(
                   File(message.uri),
                 ),
                 if (_imageText.isNotEmpty)
-                  Text(
-                    _imageText,
-                    style: const TextStyle(
-                      fontSize: 16,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      _imageText,
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                   ),
               ],
