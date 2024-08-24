@@ -21,6 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatRoomProvider>(builder: (context, chatRoomProvider, _) {
+      List chats = chatRoomProvider.chats;
+
       return Scaffold(
         appBar: AppBar(
           title: AppBoldText(
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               chatRoomProvider.addChat(
                 ChatRoom(
                   id: id,
-                  title: 'Chat ${chatRoomProvider.chats.length + 1}',
+                  title: 'Chat ${chats.length + 1}',
                   messages: messages,
                   chat: Chat(
                     onSendPressed: (message) {},
@@ -56,13 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
               );
 
               debugPrint(
-                  'Chats: ${chatRoomProvider.chats.map((chat) => chat.title).toList()}');
+                  'Chats: ${chats.map((chat) => chat.title).toList()}');
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ChatScreen(
-                    chatRoom: chatRoomProvider.chats
+                    chatRoom: chats
                         .singleWhere((chat) => chat.id == id),
                   ),
                 ),
@@ -73,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        body: chatRoomProvider.chats.isEmpty
+        body: chats.isEmpty
             ? Center(
                 child: AppText(
                   'No chats yet',
@@ -81,10 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               )
             : ListView.builder(
-                itemCount: chatRoomProvider.chats.length,
+                itemCount: chats.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  final chatRoom = chatRoomProvider.chats[index];
+                  final chatRoom = chats[index];
 
                   return ListTile(
                     onTap: () {
