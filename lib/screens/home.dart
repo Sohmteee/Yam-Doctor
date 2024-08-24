@@ -82,12 +82,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   final chat = chatRoomProvider.chats[index];
 
                   return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatScreen(
+                            chat: chat,
+                          ),
+                        ),
+                      );
+                    },
                     title: AppBoldText(
                       chat.title,
                     ),
-                    subtitle: (chat.chat.messages.isNotEmpty) ? Text(
-                      chat.chat.messages.last.metadata?['message'] ?? '',
-                    ),
+                    subtitle: (chat.chat.messages.isNotEmpty)
+                        ? Text(
+                            chat.chat.messages.last.metadata?['message'],
+                          )
+                        : null,
                   );
                 },
               ),
