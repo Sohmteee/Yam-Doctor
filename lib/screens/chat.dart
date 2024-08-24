@@ -142,8 +142,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 if (_imageText.isNotEmpty)
                   Text(
                     _imageText,
-                    style: TextStyle(
-                      fontSize: 12.sp,
+                    style: const TextStyle(
+                      fontSize: 16,
                     ),
                   ),
               ],
