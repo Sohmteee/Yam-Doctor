@@ -1,8 +1,16 @@
 import 'package:app/models/chatroom.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uuid/uuid.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:mime/mime.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:uuid/uuid.dart'
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -93,7 +101,7 @@ void _handleFileSelection() async {
     type: FileType.any,
   );
 
-  if (result != null && result.files.single.path != null) {
+  if (result != null && result.files.single.path != null) {file_picker
     final message = types.FileMessage(
       author: _user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
