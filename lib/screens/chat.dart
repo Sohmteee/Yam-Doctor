@@ -129,7 +129,6 @@ class _ChatScreenState extends State<ChatScreen> {
             onChanged: (value) {
               setState(() {});
             },
-            
             decoration: InputDecoration(
               hintText: 'Type a message',
               hintStyle: const TextStyle(
@@ -145,7 +144,22 @@ class _ChatScreenState extends State<ChatScreen> {
                 horizontal: 16.w,
                 vertical: 8.h,
               ),
-              suffixIcon: V
+              suffixIcon: Visibility(
+                visible: _controller.text.isNotEmpty,
+                child: ZoomTapAnimation(
+                  child: const Icon(
+                    IconlyLight.send,
+                  ),
+                  onTap: () {
+                    _handleSendPressed(
+                      types.PartialText(
+                        text: _controller.text.trim(),
+                      ),
+                    );
+                    _controller.clear();
+                  },
+                ),
+              ),
             ),
           ),
         ),
