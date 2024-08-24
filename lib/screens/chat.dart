@@ -371,7 +371,7 @@ ${messages.map((message) => message).join('\n')}
         .catchError((error) => error.toString());
 
     setState(() {
-      widget.chatRoom.title = response!;
+      if (widget.chatRoom.title.isEmpty) widget.chatRoom.title = response!;
     });
   }
 
