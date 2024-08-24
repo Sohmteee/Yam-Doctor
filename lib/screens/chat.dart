@@ -254,6 +254,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               for (var image in _images) {
                                 _addMessage(image);
                               }
+                              _getImageResponse(_images);
                               _images.clear();
                             }
 
@@ -296,11 +297,6 @@ class _ChatScreenState extends State<ChatScreen> {
         contents.add(
           /* ${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}:  */
           message.text,
-        );
-      } else if (message is types.ImageMessage) {
-        contents.add(
-          /* ${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}:  */
-          '${message.uri}',
         );
       }
     }
