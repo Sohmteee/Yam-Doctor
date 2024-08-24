@@ -306,7 +306,7 @@ class _ChatScreenState extends State<ChatScreen> {
       }
     }
 
-    debugPrint(contents.map((e) => e.toJson()['parts']).toList().toString());
+    debugPrint(contents.map((e) => e.toJson()).toList().toString());
     return contents;
   }
 
