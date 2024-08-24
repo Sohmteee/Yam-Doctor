@@ -144,6 +144,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 horizontal: 16.w,
                 vertical: 8.h,
               ),
+              prefixIcon: ZoomTapAnimation(
+                child: _handleImageSelection,
+                icon: const Icon(
+                  IconlyLight.image,
+                ),
+              ),
               suffixIcon: Visibility(
                 visible: _controller.text.isNotEmpty,
                 child: Padding(
