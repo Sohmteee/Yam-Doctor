@@ -37,6 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 id: Xid().toString(),
                 title: 'New Chat',
                 chat: Chat(
+                  onSendPressed: (message) {
+                    print(message);
+                  },
+                  user: User(
+                    id: Xid().toString(),
+                    avatar: 'https://i.pravatar.cc/150?img=68',
+                    firstName: 'John',
+                    lastName: 'Doe',
+                  ),
                   messages: [
                     Message(
                       metadata: {
