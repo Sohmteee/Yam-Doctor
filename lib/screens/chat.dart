@@ -184,8 +184,9 @@ class _ChatScreenState extends State<ChatScreen> {
   void _handleMessageTap(BuildContext _, types.Message message) async {
     if (message is types.FileMessage) {
       var localPath = message.uri;
+      final regExp = RegExp(r'(^http[s]?:\/\/)');
 
-      if (RegExp.hasMatch(message.uri, RegExp(r'^http'))) {
+      if (regExp.hasMatch(message.uri)) {
         try {
           final index = widget.chatRoom.messages
               .indexWhere((element) => element.id == message.id);
