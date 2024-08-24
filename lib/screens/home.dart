@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom: 10.h,
           ),
           child: FloatingActionButton(
+            backgroundColor: Theme.of(context).colorScheme.primary,
             onPressed: () {
               String id = const Uuid().v4();
               List<types.Message> messages = [];
