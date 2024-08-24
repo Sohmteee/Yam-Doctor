@@ -105,6 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Handle the selected option here
                         print('Selected: $result');
                       },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
                       itemBuilder: (BuildContext context) =>
                           <PopupMenuEntry<int>>[
                         PopupMenuItem<int>(
