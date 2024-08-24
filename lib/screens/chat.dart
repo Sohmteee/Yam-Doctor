@@ -40,8 +40,8 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Chat(
           messages: widget.chatRoom.messages,
           onSendPressed: (message) {
-            setState(() {
-            });
+            _handleSendPressed(message);
+            debugPrint(widget.chatRoom.messages);
           },
           user: widget.chatRoom.chat.user,
         ),
