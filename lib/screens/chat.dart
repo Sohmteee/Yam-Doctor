@@ -285,12 +285,10 @@ class _ChatScreenState extends State<ChatScreen> {
           final message = types.ImageMessage(
             author: widget.chatRoom.chat.user,
             createdAt: DateTime.now().millisecondsSinceEpoch,
-            height: result.size.,
+            name: result.path.split('/').last,
             id: const Uuid().v4(),
-            name: result.name,
-            size: bytes.length,
+            size: result.size,
             uri: result.path,
-            width: image.width.toDouble(),
           );
 
           // _addMessage(message);
