@@ -37,6 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
   final List<Uint8List> _imagesBytes = [];
+  String _imageText = '';
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -136,10 +137,8 @@ class _ChatScreenState extends State<ChatScreen> {
             return Column(
               children: [
                 Image.file(
-                  File(message.),
-
+                  File(message.uri),
                 ),
-
               ],
             );
           },
@@ -268,6 +267,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images.isNotEmpty) {
+                              _imageText = 
                               for (var image in _images) {
                                 _addMessage(image);
                               }
