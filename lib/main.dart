@@ -23,7 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context) {
+      // designSize: ScreenUtil.defaultSize,
+      
+
+      builder: (context, _) {
         return MaterialApp(
           title: 'Yam Doctor',
           theme: ThemeData(
