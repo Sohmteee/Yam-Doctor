@@ -99,9 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: AppBoldText(
                       chat.title,
                     ),
-                    trailing: const DropdownMenu(
-                      dropdownMenuEntries: [],
-                    ),
+                    trailing: const PopupMenuButton(
+                      itemBuilder: [
+                        PopupMenuItem(
+                          child: Text('Delete'),
+                        ),
+                      ],
+                      ),
                   );
                 },
               ),
