@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:app/models/chatroom.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart' show Uint8List, rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -33,6 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
+  final List<Uint8List> _imagesBytes = [];
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -256,6 +257,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               }
                               _getImageResponse(_images);
                               _images.clear();
+                              _imagesBytes.clear();
                             }
 
                             _handleSendPressed(
@@ -327,12 +329,12 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse(List<types.ImageMessage> images) async {
+  void _getImageResponse() async {
     final messages = segmentChat();
 
     final response = await gemini
         .textAndImage(
-          images: images.map((image) => image.).toList(),
+          images: _images.map((image) => image.).toList(),
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
@@ -424,8 +426,8 @@ ${messages.map((message) => message).join('\n')}
           uri: result.path,
           width: image.width.toDouble(),
         );
-        
-      _imagesBytes.add(message.bytes);
+
+      _imagesBytes.add(bytes);
         _showImagePreview(message);
       }
     } catch (e) {
