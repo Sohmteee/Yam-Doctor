@@ -331,19 +331,25 @@ ${messages.map((message) => message).join('\n')}
 
     final response = await gemini
         .text('''
-$'Please name the chat based on the chat so far. The chat so far is as follows:\n'
+Please name the chat based on the chat so far. The chat so far is as follows:\n
 ${messages.map((message) => message).join('\n')}
         ''')
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
 
-        setState
+        setState(() {
+          widget.chatRoom.title = response!;
+        });
   }
 
   void _addMessage(types.Message message) {
     setState(() {
       widget.chatRoom.messages.insert(0, message);
     });
+
+    if (widget.chatRoom.messages.length > 3) {
+      _nameChat();
+    }
   }
 
   void _showImagePreview(types.ImageMessage message) {
