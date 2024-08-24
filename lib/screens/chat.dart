@@ -329,12 +329,15 @@ ${messages.map((message) => message).join('\n')}
     _addMessage(message);
   }
 
-  void _getImageResponse() async {
+  void _getImageResponse(List<Uint8List> images, ) async {
     final messages = segmentChat();
 
     final response = await gemini
         .textAndImage(
-          images: _images.map((image) => image.).toList(),
+          images: images,
+          text: ''' 
+
+          '''
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
