@@ -40,8 +40,6 @@ class _ChatScreenState extends State<ChatScreen> {
     role: types.Role.admin,
   );
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,15 +280,14 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
-    final response = gemini.text(text);
-    final data = jsonDecode(response.body);
-    debugPrint(data.toString());
+    final response = gemini.text('Hello');
+    debugPrint(response.);
 
     final message = types.TextMessage(
       id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      text: response,
+      text: response.toString(),
     );
 
     _addMessage(message);
