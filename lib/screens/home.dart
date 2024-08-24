@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: FloatingActionButton(
           onPressed: () {
             String id = Xid().toString();
-            List<Message> messages = [];
+            List<types.Message> messages = [];
 
             chats.add(
               ChatRoom(
@@ -42,11 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'New Chat',
                 messages: messages,
                 chat: Chat(
-                  onSendPressed: (message) {
+                  onSendPressed: (types.Message message) {
                     messages.add(
-                      Message(
-                        message: ,
-                      ),
+                      message
                     );
                   },
                   user: types.User(
