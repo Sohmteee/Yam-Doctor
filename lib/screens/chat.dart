@@ -347,7 +347,8 @@ ${messages.map((message) => message).join('\n')}
         .textAndImage(
           images: images,
           text: '''
-          Describe the image(s) and tell the user if the yam is good or bad.
+          Describe the image(s)
+          If it contains yam(s), tell the user if the yam is good or bad, if it has any diseases.
           If they aren't pictures of yams, let the user know.
           $text
           ''',
