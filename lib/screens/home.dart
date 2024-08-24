@@ -121,7 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           decoration: const InputDecoration(
                                             hintText: 'Enter new chat title',
                                           ),
-
+                                          textCapitalization:
+                                              TextCapitalization.words,
                                           onSubmitted: (value) {
                                             chatRoomProvider.renameChat(
                                               chatRoom,
