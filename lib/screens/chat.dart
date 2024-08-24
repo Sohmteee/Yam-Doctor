@@ -356,13 +356,13 @@ ${messages.map((message) => message).join('\n')}
  */
   void _handleImageSelection() async {
     try {
-      final results = await ImagePicker().pickMultiImage(
+      final result = await ImagePicker().pickImage(
         imageQuality: 70,
         maxWidth: 1440,
+        source: ImageSource.gallery,
       );
 
-      for (var result in results) {
-        final bytes = await result.readAsBytes();
+        final bytes = await result?.readAsBytes();
         final image = await decodeImageFromList(bytes);
 
         final message = types.ImageMessage(
@@ -376,10 +376,8 @@ ${messages.map((message) => message).join('\n')}
           width: image.width.toDouble(),
         );
 
-        _getImageResponse(
-          images,
-        );
-      }
+        _getImageResponse(bytes);
+      
     } catch (e) {
       print('Error picking image: $e');
     }
