@@ -2,8 +2,10 @@ import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chats.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:xid/xid.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {
             chats.add(
               ChatRoom(
-                id: Xid(),
+                id: Xid().toString(),
                 title: 'New Chat',
                 chat: Chat(
                   messages: [
