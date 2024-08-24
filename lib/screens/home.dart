@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
     return Consumer<ChatRoomProvider>(
-      builder: (context, chats) {
+      builder: (context, chatRoomProvider, _) {
         return Scaffold(
           appBar: AppBar(
             title: AppBoldText(
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 String id = Xid().toString();
                 List<types.Message> messages = [];
         
-                chats.add(
+                chatRoomProvider.add(
                   ChatRoom(
                     id: id,
                     title: 'New Chat',
@@ -53,13 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
         
-                debugPrint('Chats: ${chats.map((chat) => chat.title).toList()}');
+                debugPrint('Chats: ${chatRoomProvider.map((chat) => chat.title).toList()}');
         
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => ChatScreen(
-                      chat: chats.singleWhere((chat) => chat.id == id),
+                      chat: chatRoomProvider.singleWhere((chat) => chat.id == id),
                     ),
                   ),
                 );
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          body: chats.isEmpty
+          body: chatRoomProvider.isEmpty
               ? Center(
                   child: AppText(
                     'No chats yet',
@@ -77,9 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               : ListView.builder(
-                  itemCount: chats.length,
+                  itemCount: chatRoomProvider.length,
                   itemBuilder: (context, index) {
-                    final chat = chats[index];
+                    final chat = chatRoomProvider[index];
         
                     return ListTile(
                       title: AppBoldText(
