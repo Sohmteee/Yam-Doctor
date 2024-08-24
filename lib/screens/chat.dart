@@ -286,7 +286,7 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  List<String> segmentChat() {
+  List<String> segmentChat(int length = 20) {
     final messages = widget.chatRoom.messages.reversed.take(20).toList();
 
     final List<String> contents = [];
