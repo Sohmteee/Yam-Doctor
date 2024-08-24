@@ -282,9 +282,12 @@ class _ChatScreenState extends State<ChatScreen> {
     final data = jsonDecode(response.body);
     debugPrint(data.toString());
 
-    /* final message = types.TextMessage(
+    final message = types.TextMessage(
+      id: const Uuid().v4(),
       author: yamDoctor,
-    ); */
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      
+    );
   }
 
   void _addMessage(types.Message message) {
