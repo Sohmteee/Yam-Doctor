@@ -115,7 +115,9 @@ class _ChatScreenState extends State<ChatScreen> {
           showUserNames: true,
           avatarBuilder: (author) => const CircleAvatar(
             backgroundImage: AssetImage('assets/avatar.png'),
+
           ),
+          
         ),
       ),
     );
