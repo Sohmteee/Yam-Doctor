@@ -9,6 +9,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
@@ -141,12 +142,20 @@ class _ChatScreenState extends State<ChatScreen> {
                         left: 16,
                         bottom: 8,
                       ),
-                      child: Text(
-                        'Yam Doctor is typing...',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Yam Doctor is typing...',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                          SpinKitThreeBounce(
+                            color: Colors.deepPurple,
+                            size: 20.sp,
+                          ),
+                        ],
                       ),
                     ),
                   ),
