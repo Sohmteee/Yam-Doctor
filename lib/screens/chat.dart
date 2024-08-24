@@ -145,9 +145,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 vertical: 8.h,
               ),
               prefixIcon: ZoomTapAnimation(
-                child: _handleImageSelection,
-                icon: const Icon(
+                onTap: _handleImageSelection,
+                child: const Icon(
                   IconlyLight.image,
+                  color: Colors.black,
                 ),
               ),
               suffixIcon: Visibility(
@@ -157,6 +158,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: ZoomTapAnimation(
                     child: const Icon(
                       IconlyLight.send,
+                      color: Colors.deepPurple,
                     ),
                     onTap: () {
                       _handleSendPressed(
