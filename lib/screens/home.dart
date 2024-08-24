@@ -43,13 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   user: User(
                     id: Xid().toString(),
                   ),
-                  messages: const [
-                    /*  Message(
-                      metadata: {
-                        'message': 'Hello there!',
-                      },
-                    ), */
-                  ],
+                  messages: const [],
                 ),
               ),
             );
