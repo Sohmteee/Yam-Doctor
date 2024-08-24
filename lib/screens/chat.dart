@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
   final List<Uint8List> _imagesBytes = [];
-  List<String> _imageText = '';
+  List<String> _imageTexts = [];
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -140,11 +140,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 Image.file(
                   File(message.uri),
                 ),
-                if (_imageText.isNotEmpty)
+                if (_imageTexts.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      _imageText,
+                      _imageTexts.firstWhere((imageText) =>
+                          imageText.contains(message.uri)),
                       style: const TextStyle(
                         fontSize: 16,
                       ),
@@ -279,7 +280,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images.isNotEmpty) {
-                              _imageText = _controller.text.trim();
+                              _imageTexts = _controller.text.trim();
 
                               for (var image in _images) {
                                 _addMessage(image);
