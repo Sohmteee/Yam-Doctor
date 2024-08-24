@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chatroom.dart';
+import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show Uint8List, rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -53,7 +54,43 @@ class _ChatScreenState extends State<ChatScreen> {
             child: IconButton(
               splashColor: Colors.transparent,
               splashRadius: 1,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        child: Padding(
+                          padding: EdgeInsets.all(20.w),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AppBoldText(
+                                'Rename Chat',
+                                fontSize: 20.sp,
+                              ),
+                              SizedBox(height: 20.h),
+                              TextField(
+                                controller: TextEditingController(
+                                    text: widget.chatRoom.title),
+                                autofocus: true,
+                                decoration: const InputDecoration(
+                                  hintText: 'Enter new chat title',
+                                ),
+                                textCapitalization: TextCapitalization.words,
+                                onSubmitted: (value) {
+                                  context.read<ChatRoomProvider>().renameChat(
+                                        widget.chatRoom,
+                                        value,
+                                      );
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
               icon: const Icon(
                 IconlyLight.edit,
               ),
