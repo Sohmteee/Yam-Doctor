@@ -19,9 +19,8 @@ Future<void> main() async {
   );
 
   WidgetsFlutterBinding.ensureInitialized();
-await dotenv.load(fileName: ".env");
- Gemini.init(apiKey: );
-
+  await dotenv.load(fileName: ".env");
+  Gemini.init(apiKey: dotenv.env['API_KEY']!);
 
   runApp(
     MultiProvider(
@@ -48,7 +47,6 @@ class MyApp extends StatelessWidget {
             ),
             useMaterial3: false,
             fontFamily: 'Quicksand',
-            
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: AppBarTheme(
               backgroundColor: Colors.white,
@@ -62,7 +60,6 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-           
           ),
           home: const HomeScreen(),
           debugShowCheckedModeBanner: false,
