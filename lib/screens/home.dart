@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             : ListView.builder(
                 itemCount: chatRoomProvider.chats.length,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final chat = chatRoomProvider.chats[index];
 
