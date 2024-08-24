@@ -295,9 +295,9 @@ class _ChatScreenState extends State<ChatScreen> {
       if (message is types.TextMessage) {
         contents.add(
           Content(parts: [
-            Part(
-              type: PartType.text,
-              value: message.toJson()['text'],
+            Parts(
+              text: message.toJson()['text'],
+              
             ),
           ]),
         );
