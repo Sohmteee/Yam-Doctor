@@ -135,16 +135,16 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 if (_isTyping)
-                  const Align(
+                  Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 16,
                         bottom: 8,
                       ),
                       child: Row(
                         children: [
-                          Text(
+                          const Text(
                             'Yam Doctor is typing...',
                             style: TextStyle(
                               color: Colors.grey,
@@ -267,6 +267,10 @@ class _ChatScreenState extends State<ChatScreen> {
   void _getResponse() async {
     final messages = segmentChat();
 
+    setState(() {
+      _isTyping = true;
+    });
+
     final response = await gemini
         .text(
           '''
@@ -279,6 +283,11 @@ ${messages.map((message) => message).join('\n')}
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
+
+    setState(() {
+      _isTyping = false;
+    });
+
     debugPrint(response);
 
     final message = types.TextMessage(
@@ -292,6 +301,11 @@ ${messages.map((message) => message).join('\n')}
   }
 
   void _getImageResponse(Uint8List image) async {
+    setState(() {
+      _isTyping = true;
+    });
+
+
     final response = await gemini
         .textAndImage(
           images: [image],
@@ -307,6 +321,8 @@ ${messages.map((message) => message).join('\n')}
         )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
+
+        
 
     debugPrint(response);
     final message = types.TextMessage(
