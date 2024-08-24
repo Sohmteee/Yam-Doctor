@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BoldText extends StatelessWidget {
-  BoldText(
+class AppBoldText extends StatelessWidget {
+  AppBoldText(
     this.text, {
     this.fontSize,
     this.fontWeight,
@@ -20,6 +20,7 @@ class BoldText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.bold,
+        fontFamily: 'Quicksand',
       ),
     );
   }

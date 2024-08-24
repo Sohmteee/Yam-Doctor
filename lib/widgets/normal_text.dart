@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppText extends StatelessWidget {
-  const AppText(
+  AppText(
     this.text, {
     this.fontSize,
     this.fontWeight,
@@ -10,8 +10,8 @@ class AppText extends StatelessWidget {
   });
 
   final String text;
-  final double? fontSize;
-  final FontWeight? fontWeight;
+  double? fontSize;
+  FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class AppText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.normal,
+        fontFamily: 'Quicksand',
       ),
     );
   }

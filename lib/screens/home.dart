@@ -1,3 +1,4 @@
+import 'package:app/widgets/bold_text.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: AppBoldText(
           'Recent Chats',
         ),
       ),
