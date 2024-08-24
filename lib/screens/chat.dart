@@ -146,18 +146,21 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               suffixIcon: Visibility(
                 visible: _controller.text.isNotEmpty,
-                child: ZoomTapAnimation(
-                  child: const Icon(
-                    IconlyLight.send,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 8.w),
+                  child: ZoomTapAnimation(
+                    child: const Icon(
+                      IconlyLight.send,
+                    ),
+                    onTap: () {
+                      _handleSendPressed(
+                        types.PartialText(
+                          text: _controller.text.trim(),
+                        ),
+                      );
+                      _controller.clear();
+                    },
                   ),
-                  onTap: () {
-                    _handleSendPressed(
-                      types.PartialText(
-                        text: _controller.text.trim(),
-                      ),
-                    );
-                    _controller.clear();
-                  },
                 ),
               ),
             ),
