@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onSendPressed: (message) {
                     print(message);
                   },
-                  user: User(
+                  user: types.User(
                     id: Xid().toString(),
                   ),
                   messages: const [],
