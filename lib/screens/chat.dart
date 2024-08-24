@@ -261,7 +261,7 @@ ${messages.map((message) => message).join('\n')}
       id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      text: response!,
+      text: response ?? 'I cannot help you with that',
     );
 
     _addMessage(message);
