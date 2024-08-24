@@ -121,7 +121,18 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 if (_isImagePreviewVisible)
-                  
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return Image.file(
+                          File(widget.chatRoom.messages
+                              .whereType<types.ImageMessage>()
+                              .first
+                              .uri),
+                        );
+                      },
+                    ),
                   ),
                 SizedBox(height: 10.h),
                 TextField(
