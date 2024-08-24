@@ -257,8 +257,10 @@ class _ChatScreenState extends State<ChatScreen> {
                               }
                               _getImageResponse(
                                   _imagesBytes, _controller.text.trim());
+
                               _images.clear();
                               _imagesBytes.clear();
+                              _controller.clear();
                             } else {
                               _handleSendPressed(
                                 types.PartialText(
