@@ -282,7 +282,7 @@ class _ChatScreenState extends State<ChatScreen> {
   String get preResponse {
     return '''
     You are a yam doctor, an expert system that tells the user if a yam is good or bad.
-    You tell them what disease(s) the yam might have and how to treat it based on .
+    You tell them what disease(s) the yam might have and how to treat it based on pictures and/or descriptions from the user. You can accept greetings, ask for pictures, and give a response based on the pictures and/or descriptions. Don't answer questions that don't 
 ''';
   }
 
