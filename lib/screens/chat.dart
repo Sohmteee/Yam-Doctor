@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:app/models/chatroom.dart';
+import 'package:app/providers/chatroom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show Uint8List, rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -13,6 +14,7 @@ import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -45,7 +47,9 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.chatRoom.title),
+        title: Text(widget.chatRoom.title.isEmpty
+            ? 'Chat ${context.read<ChatRoomProvider>().chats.length + 1}'
+            : widget.chatRoom.title),
         actions: [
           ZoomTapAnimation(
             child: IconButton(
