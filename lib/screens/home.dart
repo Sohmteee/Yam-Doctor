@@ -2,6 +2,7 @@ import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chats.dart';
 import 'package:app/widgets/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart' as types;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onSendPressed: (message) {
                     print(message);
                   },
-                  user: types.User(
+                  user: User(
                     id: Xid().toString(),
                   ),
                   messages: const [],
