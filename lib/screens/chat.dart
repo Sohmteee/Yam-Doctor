@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<types.ImageMessage> _images = [];
   final List<Uint8List> _imagesBytes = [];
-  String _imageText = '';
+  List<String> _imageText = '';
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
@@ -144,7 +144,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      message.name,
+                      _imageText,
                       style: const TextStyle(
                         fontSize: 16,
                       ),
