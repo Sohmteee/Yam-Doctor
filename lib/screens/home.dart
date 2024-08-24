@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -106,13 +107,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       itemBuilder: (BuildContext context) =>
                           <PopupMenuEntry<int>>[
-                        const PopupMenuItem<int>(
+                        PopupMenuItem<int>(
                           value: 1,
-                          child: Text('Edit'),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(IconlyLight.edit),
+                              SizedBox(width: 10.w),
+                              const Text('Rename'),
+                            ],
+                          ),
                         ),
-                        const PopupMenuItem<int>(
+                        PopupMenuItem<int>(
                           value: 2,
-                          child: Text('Delete'),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(IconlyLight.delete),
+                              SizedBox(width: 10.w),
+                              const Text('Delete'),
+                            ],
+                          ),
                         ),
                       ],
                     ),
