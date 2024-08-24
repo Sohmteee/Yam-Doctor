@@ -42,9 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   user: User(
                     id: Xid().toString(),
-                    avatar: 'https://i.pravatar.cc/150?img=68',
-                    firstName: 'John',
-                    lastName: 'Doe',
+                    
                   ),
                   messages: [
                     Message(
