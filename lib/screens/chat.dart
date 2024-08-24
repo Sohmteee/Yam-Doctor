@@ -213,7 +213,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                           onTap: () {
                             if (_images != null) {
-                              _addMessage(_images!);
+                              for (var image in _images!) {
+                                _addMessage(image);
+                              }
                             }
                             _handleSendPressed(
                               types.PartialText(
@@ -243,7 +245,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _showImagePreview(types.ImageMessage message) {
     setState(() {
-      _images = message;
+      _images.add(message);
     });
   }
 
