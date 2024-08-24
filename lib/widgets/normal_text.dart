@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppText extends StatelessWidget {
   AppText(
@@ -18,7 +17,6 @@ class AppText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.normal,
         fontFamily: 'Quicksand',
       ),
