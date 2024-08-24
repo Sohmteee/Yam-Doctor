@@ -316,10 +316,16 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = segmentChat();
 
     final response = await gemini
-        .text('''
+        .text(
+          '''
 $preResponse
 ${messages.map((message) => message).join('\n')}
-        ''')
+        ''',
+        generationConfig: GenerationConfig(
+          temperature: 0.5,
+          
+        )
+        )
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) => error.toString());
     debugPrint(response);
