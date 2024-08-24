@@ -329,7 +329,7 @@ ${messages.map((message) => message).join('\n')}
     debugPrint(response);
 
     final message = types.TextMessage(
-      id: const Uuid().v4(),
+      id: 'yam doctor',
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
@@ -365,7 +365,7 @@ ${messages.map((message) => message).join('\n')}
 
     debugPrint(response);
     final message = types.TextMessage(
-      id: const Uuid().v4(),
+      id: 'yam doctor',
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
@@ -420,7 +420,7 @@ ${messages.map((message) => message).join('\n')}
       final message = types.FileMessage(
         author: widget.chatRoom.chat.user,
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
+        id: 'user',
         mimeType: lookupMimeType(result.files.single.path!),
         name: result.files.single.name,
         size: result.files.single.size,
@@ -447,7 +447,7 @@ ${messages.map((message) => message).join('\n')}
           author: widget.chatRoom.chat.user,
           createdAt: DateTime.now().millisecondsSinceEpoch,
           height: image.height.toDouble(),
-          id: 'const Uuid().v4()',
+          id: 'user',
           name: result.name,
           size: bytes.length,
           uri: result.path,
@@ -527,7 +527,7 @@ ${messages.map((message) => message).join('\n')}
     final textMessage = types.TextMessage(
       author: widget.chatRoom.chat.user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: const Uuid().v4(),
+      id: 'user',
       text: message.text,
     );
 
