@@ -333,7 +333,6 @@ ${messages.map((message) => message).join('\n')}
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
-
     );
 
     _addMessage(message);
@@ -370,8 +369,6 @@ ${messages.map((message) => message).join('\n')}
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
-      status: types.Status.delivered,
-      showStatus: false,
     );
 
     _addMessage(message);
