@@ -1,3 +1,4 @@
+import 'package:app/models/chatroom.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {

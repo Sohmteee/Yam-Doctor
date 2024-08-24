@@ -55,9 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ChatScreen(),
+                builder: (context) => ChatScreen(
+                  chat: chats.singleWhere((chat) => chat.id == id),
+                ),
               ),
-            )
+            );
           },
           child: const Icon(
             Icons.add,
