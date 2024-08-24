@@ -184,7 +184,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _handleMessageTap(BuildContext _, types.Message message) async {
     if (message is types.FileMessage) {
       var localPath = message.uri;
-      final regExp = RegExp(r'(^http[s]?:\/\/)');
+      final regExp = RegExp(r'(^http | \.(.*?)$)');
 
       if (regExp.hasMatch(message.uri)) {
         try {
