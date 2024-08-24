@@ -57,15 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
 
-              debugPrint(
-                  'Chats: ${chats.map((chat) => chat.title).toList()}');
+              debugPrint('Chats: ${chats.map((chat) => chat.title).toList()}');
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ChatScreen(
-                    chatRoom: chats
-                        .singleWhere((chat) => chat.id == id),
+                    chatRoom: chats.singleWhere((chat) => chat.id == id),
                   ),
                 ),
               );
@@ -86,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: chats.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  final chatRoom = chats[index];
+                  final chatRoom = chats[chats.length - index - 1];
 
                   return ListTile(
                     onTap: () {
