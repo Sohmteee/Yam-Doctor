@@ -40,7 +40,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final types.User yamDoctor = const types.User(
     id: 'yamDoctor',
     firstName: 'Yam Doctor',
-    // imageUrl: 'https://i.pravatar.cc/150?img=1',
     role: types.Role.admin,
   );
 
