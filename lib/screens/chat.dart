@@ -116,58 +116,60 @@ class _ChatScreenState extends State<ChatScreen> {
             debugPrint('Message long pressed: ${message.toJson()['text']}');
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
-          customBottomWidget: TextField(
-            controller: _controller,
-            onSubmitted: (value) {
-              _handleSendPressed(
-                types.PartialText(
-                  text: value.trim(),
+          customBottomWidget: SizedBox(
+            child: TextField(
+              controller: _controller,
+              onSubmitted: (value) {
+                _handleSendPressed(
+                  types.PartialText(
+                    text: value.trim(),
+                  ),
+                );
+                _controller.clear();
+              },
+              onChanged: (value) {
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                hintText: 'Type a message',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
                 ),
-              );
-              _controller.clear();
-            },
-            onChanged: (value) {
-              setState(() {});
-            },
-            decoration: InputDecoration(
-              hintText: 'Type a message',
-              hintStyle: const TextStyle(
-                color: Colors.grey,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(24.sp),
-                borderSide: BorderSide.none,
-              ),
-              filled: true,
-              fillColor: Colors.grey[300],
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.w,
-                vertical: 8.h,
-              ),
-              prefixIcon: ZoomTapAnimation(
-                onTap: _handleImageSelection,
-                child: const Icon(
-                  IconlyLight.image,
-                  color: Colors.black,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24.sp),
+                  borderSide: BorderSide.none,
                 ),
-              ),
-              suffixIcon: Visibility(
-                visible: _controller.text.isNotEmpty,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 8.w),
-                  child: ZoomTapAnimation(
-                    child: const Icon(
-                      IconlyLight.send,
-                      color: Colors.deepPurple,
+                filled: true,
+                fillColor: Colors.grey[300],
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 16.w,
+                  vertical: 12.h,
+                ),
+                prefixIcon: ZoomTapAnimation(
+                  onTap: _handleImageSelection,
+                  child: const Icon(
+                    IconlyLight.image,
+                    color: Colors.black,
+                  ),
+                ),
+                suffixIcon: Visibility(
+                  visible: _controller.text.isNotEmpty,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 8.w),
+                    child: ZoomTapAnimation(
+                      child: const Icon(
+                        IconlyLight.send,
+                        color: Colors.deepPurple,
+                      ),
+                      onTap: () {
+                        _handleSendPressed(
+                          types.PartialText(
+                            text: _controller.text.trim(),
+                          ),
+                        );
+                        _controller.clear();
+                      },
                     ),
-                    onTap: () {
-                      _handleSendPressed(
-                        types.PartialText(
-                          text: _controller.text.trim(),
-                        ),
-                      );
-                      _controller.clear();
-                    },
                   ),
                 ),
               ),
