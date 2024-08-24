@@ -122,27 +122,57 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 SizedBox(
                   height: 50.h,
-                  child: ListView.builder(
+                  child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemCount: _images.length,
+                    separatorBuilder: (context, index) {
+                      return SizedBox(width: 10.w);
+                    },
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: Border.all(
-                            color: Colors.grey,
-                            width: 1.sp,
+                      return Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.r),
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 1.sp,
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(11.r),
+                              child: Image.file(
+                                File(_images[index].uri),
+                                height: 50.h,
+                                width: 50.w,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(11.r),
-                          child: Image.file(
-                            File(_images[index].uri),
-                            height: 50.h,
-                            width: 50.w,
-                            fit: BoxFit.cover,
+                          Positioned(
+                            top: -5.h,
+                            right: -5.w,
+                            child: ZoomTapAnimation(
+                              onTap: () {
+                                setState(() {
+                                  _images.removeAt(index);
+                                });
+                              },
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.red,
+                                  size: 20.sp,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       );
                     },
                   ),
