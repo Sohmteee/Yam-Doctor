@@ -300,13 +300,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 text: message.toJson()['text'],
               ),
             ],
-            role: message.author.id == yamDoctor.id ? 'yam Doctor' : 'user',
+            role: message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User',
           ),
         );
       }
     }
 
-    debugPrint(contents.map((e) => e.toJson()).toList().toString());
+    debugPrint(contents.map((e) => e.toJson()['parts']).toList().toString());
     return contents;
   }
 
