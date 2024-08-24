@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:xid/xid.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -100,15 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Text(
                             chat.chat.messages.last.metadata?['message'],
                           )
-                        : null,
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.more,
-                        size: 20.sp,
-                      ),
-                      onPressed: () {
+                        : 'null',
+                    trailing: ZoomTapAnimation(
+                      onTap: () {
                         chatRoomProvider.removeChat(chat);
                       },
+                      child: Icon(
+                        Icons.more_vert_rounded,
+                        size: 20.sp,
+                      ),
                     ),
                   );
                 },
