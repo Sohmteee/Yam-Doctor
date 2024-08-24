@@ -452,8 +452,6 @@ ${messages.map((message) => message).join('\n')}
           size: bytes.length,
           uri: result.path,
           width: image.width.toDouble(),
-          status: types.Status.seen,
-          showStatus: true,
         );
 
         _addMessage(message);
@@ -531,8 +529,6 @@ ${messages.map((message) => message).join('\n')}
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: const Uuid().v4(),
       text: message.text,
-      status: types.Status.seen,
-      showStatus: true,
     );
 
     _addMessage(textMessage);
