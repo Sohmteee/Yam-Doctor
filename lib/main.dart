@@ -7,6 +7,8 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+late String apiKey;
+
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -20,7 +22,7 @@ Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  Gemini.init(apiKey: dotenv.env['API_KEY']!);
+  apiKey = dotenv.env['API_KEY']!;
 
   runApp(
     MultiProvider(

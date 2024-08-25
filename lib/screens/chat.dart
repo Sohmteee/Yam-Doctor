@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:app/main.dart';
 import 'package:app/models/chatroom.dart';
 import 'package:app/providers/chatroom.dart';
 import 'package:app/widgets/text.dart';
