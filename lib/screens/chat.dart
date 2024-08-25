@@ -321,18 +321,13 @@ class _ChatScreenState extends State<ChatScreen> {
       _isTyping = true;
     });
 
-    final response = await gemini.generateContent( messages);
+    final response = await gemini.generateContent( [
+      Content.text(preResponse),
+      ...messages,
+      ]).th;
 
 
-        .text(
-          '''
-$preResponse
-${messages.map((message) => message).join('\n')}
-        ''',
-          generationConfig: GenerationConfig(
-            temperature: temp,
-          ),
-        )
+       
         .then((value) => value?.content?.parts?.last.text)
         .catchError((error) =>
             'It looks like an error occurred. Check your internet connection and try again.');
