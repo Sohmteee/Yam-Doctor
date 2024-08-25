@@ -301,9 +301,10 @@ class _ChatScreenState extends State<ChatScreen> {
     for (var message in messages) {
       if (message is types.TextMessage) {
         contents.add(
-          /* ${message.author.id == yamDoctor.id ? 'Yam Doctor' : 'User'}:  */
-          message.text,
+          Content.text(message.text),
         );
+      } else if (message is types.ImageMessage) {
+        contents.add(Content(role, parts))
       }
     }
 
