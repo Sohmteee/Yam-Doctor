@@ -38,7 +38,9 @@ class _ChatScreenState extends State<ChatScreen> {
   final model = GenerativeModel(
     model: "gemini-1.5-flash",
     apiKey: apiKey,
-    generationConfig: 
+    safetySettings: [
+      S
+    ],
   );
   double temp = .7;
 
