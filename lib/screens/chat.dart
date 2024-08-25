@@ -339,7 +339,7 @@ class _ChatScreenState extends State<ChatScreen> {
       id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      text: response ?? 'I cannot help you with that',
+      text: response?.trim() ?? 'I cannot help you with that',
     );
 
     _addMessage(message);
