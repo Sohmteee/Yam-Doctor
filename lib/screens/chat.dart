@@ -292,7 +292,7 @@ class _ChatScreenState extends State<ChatScreen> {
 ''';
   }
 
-  List<Content> segmentChat({int length = 20}) {
+  Future<List<Content>> segmentChat({int length = 20}) async {
     final messages =
         widget.chatRoom.messages.take(length).toList().reversed.toList();
 
@@ -306,7 +306,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Content.text(message.text),
         );
       } else if (message is types.ImageMessage) {
-        contents.add(Content.data('image/png', File(message.uri).rea));
+        contents.add(Content.data('image/png', await File(message.uri).readAsBytes()));
       }
     }
 
@@ -315,15 +315,13 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
-    final messages = segmentChat();
+    final messages = await  segmentChat();
 
     setState(() {
       _isTyping = true;
     });
 
-    final response = await gemini.generateContent([
-      Content.text(),
-    ]);
+    final response = await gemini.generateContent( messages);
 
 
         .text(
