@@ -52,6 +52,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- Thanks to Google for providing the [Google Gemini API](https://cloud.google.com/gemini) used in this project.
+- Thanks to Google for providing the [Google Gemini API](https://ai.google.dev/) used in this project.
 - Special thanks to Mr. Alade, our lecturer, for assigning this project.
 
