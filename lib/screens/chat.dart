@@ -453,7 +453,7 @@ ${messages.map((message) => message).join('\n')}
           uri: result.path,
           width: image.width.toDouble(),
 
-          showStatus        );
+                  );
 
         _addMessage(message);
         _getImageResponse(bytes);
@@ -531,7 +531,7 @@ ${messages.map((message) => message).join('\n')}
       id: const Uuid().v4(),
       text: message.text,
 
-      showStatus    );
+          );
 
     _addMessage(textMessage);
   }
