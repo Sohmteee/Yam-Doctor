@@ -12,6 +12,7 @@ import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:http/http.dart' as http;
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,7 +21,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -35,12 +35,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final model = GenerativeModel(
+  final gemini = GenerativeModel(
     model: "gemini-1.5-flash",
     apiKey: apiKey,
-    safetySettings: [
-      S
-    ],
   );
   double temp = .7;
 
@@ -293,7 +290,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<String> segmentChat({int length = 20}) {
     final messages =
-        widget.chatRoom.messages.take(length).toList().reversed().toList();
+        widget.chatRoom.messages.take(length).toList().reversed.toList();
 
     final List<String> contents = [];
 
