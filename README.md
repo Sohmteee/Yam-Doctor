@@ -39,8 +39,8 @@ To install and run Yam Doctor on your local machine:
 
 ## Usage
 
-- **Home Screen**: Start by creating a new chat in the home screen .
-- **Diagnosis Screen**: View the probable disease or health status of your yam based on the provided input.
+- **Home Screen**: Start by creating a new chat in the home screen or opening one of your chats in your chat history.
+- **Chat Screen**: Send images and/or text descriptions while chatting with the AI.
 
 ## Contributing
 
