@@ -35,7 +35,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-final model = GenerativeModel(model: "gemini-1.5-flash", apiKey: apiKey);
+  final model = GenerativeModel(
+    model: "gemini-1.5-flash",
+    apiKey: apiKey,
+    generationConfig: 
+  );
   double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
@@ -286,7 +290,8 @@ final model = GenerativeModel(model: "gemini-1.5-flash", apiKey: apiKey);
   }
 
   List<String> segmentChat({int length = 20}) {
-    final messages = widget.chatRoom.messages.take(length).toList().reversed().toList();
+    final messages =
+        widget.chatRoom.messages.take(length).toList().reversed().toList();
 
     final List<String> contents = [];
 
