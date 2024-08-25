@@ -36,13 +36,11 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final gemini = GenerativeModel(
-    model: "gemini-1.5-flash",
-    apiKey: apiKey,
-    generationConfig: GenerationConfig(
-      temperature: .7,
-    
-    )
-  );
+      model: "gemini-1.5-flash",
+      apiKey: apiKey,
+      generationConfig: GenerationConfig(
+        temperature: .7,
+      ));
   // double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
@@ -296,17 +294,18 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages =
         widget.chatRoom.messages.take(length).toList().reversed.toList();
 
-    final  List<Content> contents = [];
+    final List<Content> contents = [];
 
     for (var message in messages) {
       // String role = message.author.id == yamDoctor.id ? 'yam doctor' : 'user';
-      
+
       if (message is types.TextMessage) {
         contents.add(
           Content.text(message.text),
         );
       } else if (message is types.ImageMessage) {
-        contents.add(Content.data('image/png', await File(message.uri).readAsBytes()));
+        contents.add(
+            Content.data('image/png', await File(message.uri).readAsBytes()));
       }
     }
 
@@ -315,20 +314,18 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _getResponse() async {
-    final messages = await  segmentChat();
+    final messages = await segmentChat();
 
     setState(() {
       _isTyping = true;
     });
 
-    final response = await gemini.generateContent( [
-      Content.text(preResponse),
-      ...messages,
-      ]).th;
-
-
-       
-        .then((value) => value?.content?.parts?.last.text)
+    final response = await gemini
+        .generateContent([
+          Content.text(preResponse),
+          ...messages,
+        ])
+        .then((value) => value.candidates.first.text)
         .catchError((error) =>
             'It looks like an error occurred. Check your internet connection and try again.');
 
@@ -348,7 +345,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _addMessage(message);
   }
 
-  void _getImageResponse(Uint8List image) async {
+ /*  void _getImageResponse(Uint8List image) async {
     setState(() {
       _isTyping = true;
     });
@@ -383,7 +380,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     _addMessage(message);
   }
-
+ */
   Future<void> _nameChat() async {
     final messages = segmentChat(length: 5);
 
