@@ -42,6 +42,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/splash.png
     - .env
 
   fonts:
