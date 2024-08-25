@@ -15,7 +15,7 @@ subprojects {
         if (details.requested.group == 'com.android.support'&& !details.requested.name.('multidex') ) {
             details.useVersion "27.1.1"
             }
-            }
+        }
     }
 }
 
