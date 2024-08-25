@@ -13,13 +13,4 @@ class ChatRoom {
     required this.chat,
     required this.messages,
   });
-
-  factory ChatRoom.fromJson(Map<String, dynamic> json) {
-    return ChatRoom(
-      id: json['id'],
-      title: json['title'],
-      chat: json['chat'],
-      messages: json['messages'],
-    );
-  }
 }
