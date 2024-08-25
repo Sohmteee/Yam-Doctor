@@ -345,7 +345,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _addMessage(message);
   }
 
- /*  void _getImageResponse(Uint8List image) async {
+  /*  void _getImageResponse(Uint8List image) async {
     setState(() {
       _isTyping = true;
     });
@@ -382,24 +382,16 @@ class _ChatScreenState extends State<ChatScreen> {
   }
  */
   Future<void> _nameChat() async {
-    final messages = segmentChat(length: 5);
+    final messages = await segmentChat(length: 5);
 
     final response = await gemini
-     .generateContent([
+        .generateContent([
           Content.text('''
-'''),
+Please name the chat based on the chat so far. You can name it based on the yam disease if any has been diagnosed. Whatever your response is, it should be nothing more than 5 words. Don't use the word 'chat' in naming. The chat so far is as follows:\n
+        '''),
           ...messages,
         ])
-        .text(
-          '''
-Please name the chat based on the chat so far. You can name it based on the yam disease if any has been diagnosed. Whatever your response is, it should be nothing more than 5 words. Don't use the word 'chat' in naming. The chat so far is as follows:\n
-${messages.map((message) => message).join('\n')}
-        ''',
-          generationConfig: GenerationConfig(
-            temperature: temp,
-          ),
-        )
-        .then((value) => value?.content?.parts?.last.text)
+        .then((value) => value.candidates.first.text)
         .catchError((error) => error.toString());
 
     debugPrint('Chat Name: $response');
