@@ -38,8 +38,12 @@ class _ChatScreenState extends State<ChatScreen> {
   final gemini = GenerativeModel(
     model: "gemini-1.5-flash",
     apiKey: apiKey,
+    generationConfig: GenerationConfig(
+      temperature: .7,
+    
+    )
   );
-  double temp = .7;
+  // double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
   bool _isTyping = false;
@@ -315,7 +319,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     final response = await gemini.generateContent([
-      Content.text()
+      Content.text(),
     ]);
 
 
