@@ -459,7 +459,7 @@ Please name the chat based on the chat so far. You can name it based on the yam 
         );
 
         _addMessage(message);
-        _getImageResponse(bytes);
+        _getResponse();
       }
     } catch (e) {
       print('Error picking image: $e');
