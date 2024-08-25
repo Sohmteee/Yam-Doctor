@@ -306,7 +306,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Content.text(message.text),
         );
       } else if (message is types.ImageMessage) {
-        contents.add(Content.);
+        contents.add(Content.data('image/png', message.));
       }
     }
 
