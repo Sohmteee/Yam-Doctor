@@ -452,8 +452,7 @@ ${messages.map((message) => message).join('\n')}
           size: bytes.length,
           uri: result.path,
           width: image.width.toDouble(),
-
-                  );
+        );
 
         _addMessage(message);
         _getImageResponse(bytes);
@@ -530,8 +529,7 @@ ${messages.map((message) => message).join('\n')}
       createdAt: DateTime.now().millisecondsSinceEpoch,
       id: const Uuid().v4(),
       text: message.text,
-
-          );
+    );
 
     _addMessage(textMessage);
   }
