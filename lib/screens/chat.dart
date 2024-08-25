@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   bool _isTyping = false;
   final types.User yamDoctor = const types.User(
-    id: 'yam doctor',
+    id: 'yamDoctor',
     firstName: 'Yam Doctor',
     role: types.Role.admin,
   );
@@ -329,7 +329,7 @@ ${messages.map((message) => message).join('\n')}
     debugPrint(response);
 
     final message = types.TextMessage(
-      id: 'yam doctor',
+      id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
@@ -365,7 +365,7 @@ ${messages.map((message) => message).join('\n')}
 
     debugPrint(response);
     final message = types.TextMessage(
-      id: 'yam doctor',
+      id: const Uuid().v4(),
       author: yamDoctor,
       createdAt: DateTime.now().millisecondsSinceEpoch,
       text: response ?? 'I cannot help you with that',
@@ -420,7 +420,7 @@ ${messages.map((message) => message).join('\n')}
       final message = types.FileMessage(
         author: widget.chatRoom.chat.user,
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: 'user',
+        id: const Uuid().v4(),
         mimeType: lookupMimeType(result.files.single.path!),
         name: result.files.single.name,
         size: result.files.single.size,
@@ -447,12 +447,13 @@ ${messages.map((message) => message).join('\n')}
           author: widget.chatRoom.chat.user,
           createdAt: DateTime.now().millisecondsSinceEpoch,
           height: image.height.toDouble(),
-          id: 'user',
+          id: const Uuid().v4(),
           name: result.name,
           size: bytes.length,
           uri: result.path,
           width: image.width.toDouble(),
-        );
+
+          showStatus        );
 
         _addMessage(message);
         _getImageResponse(bytes);
@@ -527,9 +528,10 @@ ${messages.map((message) => message).join('\n')}
     final textMessage = types.TextMessage(
       author: widget.chatRoom.chat.user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: 'user',
+      id: const Uuid().v4(),
       text: message.text,
-    );
+
+      showStatus    );
 
     _addMessage(textMessage);
   }
