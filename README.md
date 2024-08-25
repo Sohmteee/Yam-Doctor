@@ -1,6 +1,6 @@
 # Yam Doctor
 
-**Yam Doctor** is an expert system designed to help farmers and agricultural enthusiasts diagnose diseases in yams. By utilizing advanced machine learning through the Google Gemini API, Yam Doctor can analyze photos and text descriptions of yams to identify potential diseases or confirm the health of the yam.
+**Yam Doctor** is an expert system designed to diagnose diseases in yams. By utilizing advanced machine learning through the Google Gemini API, Yam Doctor can analyze photos and text descriptions of yams to identify potential diseases or confirm the health of the yam.
 
 ## Features
 
@@ -39,7 +39,7 @@ To install and run Yam Doctor on your local machine:
 
 ## Usage
 
-- **Home Screen**: Start by selecting an image or entering a text description.
+- **Home Screen**: Start by creating a new chat in the home screen .
 - **Diagnosis Screen**: View the probable disease or health status of your yam based on the provided input.
 
 ## Contributing
