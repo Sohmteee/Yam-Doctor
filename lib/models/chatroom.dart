@@ -15,6 +15,11 @@ class ChatRoom {
   });
 
   factory ChatRoom.fromJson(Map<String, dynamic> json) {
-    return Chat
+    return ChatRoom(
+      id: json['id'],
+      title: json['title'],
+      chat: json['chat'],
+      messages: json['messages'],
+    );
   }
 }
