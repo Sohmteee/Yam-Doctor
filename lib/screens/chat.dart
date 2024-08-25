@@ -33,7 +33,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final gemini = Gemini.instance;
+final model = GenerativeModel(model: "gemini-1.5-flash", apiKey: apiKey);
   double temp = .7;
 
   final TextEditingController _controller = TextEditingController();
