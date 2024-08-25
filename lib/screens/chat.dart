@@ -392,11 +392,13 @@ Please name the chat based on the chat so far. You can name it based on the yam 
           ...messages,
         ])
         .then((value) => value.candidates.first.text)
-        .catchError((error) => error.toString());
+        .catchError((error) => 'New Chat');
 
     debugPrint('Chat Name: $response');
     setState(() {
-      context.read<ChatRoomProvider>().renameChat(widget.chatRoom, response!);
+      context
+          .read<ChatRoomProvider>()
+          .renameChat(widget.chatRoom, response!.trim());
     });
   }
 
