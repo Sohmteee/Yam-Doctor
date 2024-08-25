@@ -314,7 +314,11 @@ class _ChatScreenState extends State<ChatScreen> {
       _isTyping = true;
     });
 
-    final response = await gemini
+    final response = await gemini.generateContent([
+      Conte
+    ]);
+
+
         .text(
           '''
 $preResponse
