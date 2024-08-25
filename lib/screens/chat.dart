@@ -299,15 +299,14 @@ class _ChatScreenState extends State<ChatScreen> {
     final  List<Content> contents = [];
 
     for (var message in messages) {
-      String role = message.author.id == yamDoctor.id ? 'yam doctor' : 'user';
-
-
+      // String role = message.author.id == yamDoctor.id ? 'yam doctor' : 'user';
+      
       if (message is types.TextMessage) {
         contents.add(
-          Content(message.text),
+          Content.text(message.text),
         );
       } else if (message is types.ImageMessage) {
-        contents.add(Content(role, parts));
+        contents.add(Content.);
       }
     }
 
