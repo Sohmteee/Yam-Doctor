@@ -326,7 +326,8 @@ class _ChatScreenState extends State<ChatScreen> {
           Content.text(preResponse),
           ...messages,
         ])
-        .then((value) => value.candidates.first.text.trim())
+        .then((value) => value.candidates.first.text?.trim()  ??
+            'I can\'t help you with that.')
         .catchError((error) =>
             'It looks like an error occurred. Check your internet connection and try again.');
 
