@@ -467,7 +467,7 @@ Please name the chat based on the chat so far. You can name it based on the yam 
   }
 
   void _handleMessageTap(BuildContext _, types.Message message) async {
-    if (message is types.Message) {
+    if (message is types.FileMessage) {
       var localPath = message.uri;
 
       if (message.uri.startsWith('http')) {
@@ -538,7 +538,7 @@ Please name the chat based on the chat so far. You can name it based on the yam 
     _addMessage(textMessage);
   }
 
-  void _loadMessages() async {
+  /* void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
     final messages = (jsonDecode(response) as List)
         .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
@@ -547,5 +547,5 @@ Please name the chat based on the chat so far. You can name it based on the yam 
     setState(() {
       widget.chatRoom.messages = messages;
     });
-  }
+  } */
 }
