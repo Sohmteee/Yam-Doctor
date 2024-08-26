@@ -406,7 +406,7 @@ Please name the chat based on the chat so far. You can name it based on the yam 
     });
 
     if (widget.chatRoom.title == 'New Chat') {
-      print('Name chat..........................................');
+      debugPrint('Name chat..........................................');
       _nameChat();
     }
   }
