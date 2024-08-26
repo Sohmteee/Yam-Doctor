@@ -53,7 +53,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final x = widget.chatRoom.
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.chatRoom.title),
