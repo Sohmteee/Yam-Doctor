@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               chatRoomProvider.addChat(
                 ChatRoom(
-                  id: id,
+                  id: id, 
                   title: 'New Chat',
                   messages: messages,
                   chat: Chat(
