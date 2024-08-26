@@ -467,7 +467,7 @@ Please name the chat based on the chat so far. You can name it based on the yam 
   }
 
   void _handleMessageTap(BuildContext _, types.Message message) async {
-    if (message is types.FileMessage) {
+    if (message is types.Message) {
       var localPath = message.uri;
 
       if (message.uri.startsWith('http')) {
