@@ -174,109 +174,106 @@ class _ChatScreenState extends State<ChatScreen> {
           },
           onPreviewDataFetched: _handlePreviewDataFetched,
           emojiEnlargementBehavior: EmojiEnlargementBehavior.multi,
-          customBottomWidget: SizedBox(
-            child: Column(
-              children: [
-                if (_isTyping)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 16,
-                        bottom: 8,
-                      ),
-                      child: Row(
-                        children: [
-                          const Text(
-                            'Yam Doctor is typing',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              // fontSize: 12,
-                            ),
+          customBottomWidget: Column(
+            children: [
+              if (_isTyping)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      bottom: 8,
+                    ),
+                    child: Row(
+                      children: [
+                        const Text(
+                          'Yam Doctor is typing',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            // fontSize: 12,
                           ),
-                          SizedBox(width: 10.w),
-                          SpinKitThreeBounce(
-                            color: Colors.deepPurple,
-                            size: 20.sp,
-                          ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(width: 10.w),
+                        SpinKitThreeBounce(
+                          color: Colors.deepPurple,
+                          size: 20.sp,
+                        ),
+                      ],
                     ),
                   ),
-                TextField(
-                  controller: _controller,
-                  onSubmitted: (value) {
-                    _handleSendPressed(
-                      types.PartialText(
-                        text: value.trim(),
-                      ),
-                    );
-                    _controller.clear();
-                  },
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  minLines: 1,
-                  maxLines: 4,
-                  keyboardType: TextInputType.multiline,
-                  textInputAction: TextInputAction.newline,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: InputDecoration(
-                    hintText: 'Type a message',
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
+                ),
+              TextField(
+                controller: _controller,
+                onSubmitted: (value) {
+                  _handleSendPressed(
+                    types.PartialText(
+                      text: value.trim(),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24.sp),
+                  );
+                  _controller.clear();
+                },
+                onChanged: (value) {
+                  setState(() {});
+                },
+                minLines: 1,
+                maxLines: 4,
+                keyboardType: TextInputType.multiline,
+                textInputAction: TextInputAction.newline,
+                textCapitalization: TextCapitalization.sentences,
+                decoration: InputDecoration(
+                  hintText: 'Type a message',
+                  hintStyle: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(24.sp),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(24.sp),
+                    borderSide: BorderSide(
+                      color: Colors.deepPurple,
+                      width: 2.sp,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(24.sp),
-                      borderSide: BorderSide(
-                        color: Colors.deepPurple,
-                        width: 2.sp,
-                      ),
+                  ),
+                  // filled: true,
+                  // fillColor: Colors.grey[300],
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 12.h,
+                  ),
+                  prefixIcon: ZoomTapAnimation(
+                    onTap: _handleImageSelection,
+                    child: Icon(
+                      IconlyLight.image,
+                      color: Colors.black,
+                      size: 25.sp,
                     ),
-                    // filled: true,
-                    // fillColor: Colors.grey[300],
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    prefixIcon: ZoomTapAnimation(
-                      onTap: _handleImageSelection,
-                      child: Icon(
-                        IconlyLight.image,
-                        color: Colors.black,
-                        size: 25.sp,
-                      ),
-                    ),
-                    suffixIcon: Visibility(
-                      visible: _controller.text.isNotEmpty,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 12.w),
-                        child: ZoomTapAnimation(
-                          child: Icon(
-                            IconlyLight.send,
-                            color: Colors.deepPurple,
-                            size: 25.sp,
-                          ),
-                          onTap: () {
-                            _handleSendPressed(
-                              types.PartialText(
-                                text: _controller.text.trim(),
-                              ),
-                            );
-                            _controller.clear();
-
-                            _getResponse();
-                          },
+                  ),
+                  suffixIcon: Visibility(
+                    visible: _controller.text.isNotEmpty,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 12.w),
+                      child: ZoomTapAnimation(
+                        child: Icon(
+                          IconlyLight.send,
+                          color: Colors.deepPurple,
+                          size: 25.sp,
                         ),
+                        onTap: () {
+                          _handleSendPressed(
+                            types.PartialText(
+                              text: _controller.text.trim(),
+                            ),
+                          );
+                          _controller.clear();
+                          _getResponse();
+                        },
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
