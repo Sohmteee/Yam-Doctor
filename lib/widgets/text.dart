@@ -46,7 +46,7 @@ class AppText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontWeight: fontWeight ?? FontWeight.normal,
+        fontWeight: fontWeight,
         fontFamily: 'Quicksand',
         fontSize: fontSize,
       ),

@@ -54,7 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.chatRoom.title),
+        title: AppText(widget.chatRoom.title),
         actions: [
           ZoomTapAnimation(
             child: IconButton(
@@ -156,7 +156,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 bottom: 8.sp,
               ),
               child: Center(
-                child: Text(
+                child: AppText(
                   headerText,
                   style: TextStyle(
                     color: Colors.grey,
@@ -185,7 +185,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     child: Row(
                       children: [
-                        const Text(
+                        const AppText(
                           'Yam Doctor is typing',
                           style: TextStyle(
                             color: Colors.grey,

@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 const Icon(IconlyLight.edit),
                                 SizedBox(width: 10.w),
-                                const Text('Rename'),
+                                AppText('Rename'),
                               ],
                             ),
                           ),
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 const Icon(IconlyLight.delete),
                                 SizedBox(width: 10.w),
-                                const Text('Delete'),
+                                AppText('Delete'),
                               ],
                             ),
                           ),
