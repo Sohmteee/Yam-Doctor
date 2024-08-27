@@ -158,10 +158,8 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Center(
                 child: AppText(
                   headerText,
-             
-                    color: Colors.grey,
-                    fontSize: 12.sp,
-                  
+                  color: Colors.grey,
+                  fontSize: 12.sp,
                 ),
               ),
             );
@@ -185,12 +183,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     child: Row(
                       children: [
-                         AppText(
+                        AppText(
                           'Yam Doctor is typing',
-                          
-                            color: Colors.grey,
-                            // fontSize: 12,
-                          
+
+                          color: Colors.grey,
+                          // fontSize: 12,
                         ),
                         SizedBox(width: 10.w),
                         SpinKitThreeBounce(
